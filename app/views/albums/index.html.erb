@@ -1,0 +1,11 @@
+<h1>Tous les albums !</h1>
+
+<ul>
+  <% @albums.each do |album| %>
+  <li>
+    Titre : <%= album.comic.title %>
+    Statut : <%= album.status %>
+    Localisation : <%= album.user.address %>
+  </li>
+  <% end %>
+</ul>

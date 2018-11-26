@@ -1,0 +1,18 @@
+<h2>Nouvel album</h2>
+
+<%= simple_form_for [@comic, @album] do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :description,
+                required: true,
+                autofocus: true %>
+    <%= f.input :available, as: :boolean, checked_value: true, unchecked_value: false %>
+
+    <%= f.association :comic, :collection => Comic.all.order(:title) %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Créer" %>
+  </div>
+<% end %>

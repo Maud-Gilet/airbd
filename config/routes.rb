@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :albums do
-    resources :rentals, only [:create, :show]
+    resources :rentals, only: [:create, :show]
   end
 
-  resources :comics, only [:create]
+  resources :comics, only: [:create]
 
 end
