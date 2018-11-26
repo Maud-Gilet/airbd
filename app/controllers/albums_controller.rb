@@ -1,5 +1,5 @@
 class AlbumsController < ApplicationController
-  before_action :set_album, only: [:show]
+  before_action :set_album, only: [:show, :edit, :update]
 
   def index
     @albums = Album.all
@@ -17,6 +17,14 @@ class AlbumsController < ApplicationController
     redirect_to album_path(@album)
   end
 
+  def edit
+  end
+
+  def update
+    @album.update(album_params)
+    redirect_to album_path(@album)
+  end
+
   def show
   end
 
@@ -27,6 +35,6 @@ class AlbumsController < ApplicationController
   end
 
   def album_params
-    params.require(:album).permit(:description, :available)
+    params.require(:album).permit(:description, :available, :comic_id)
   end
 end

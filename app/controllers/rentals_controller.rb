@@ -1,11 +1,15 @@
 class RentalsController < ApplicationController
   before_action :set_rental, only: [:show]
 
+  def new
+    @rental = Rental.new
+  end
+
   def create
-    @user = current_user
-    @rental = Rental.new(album_id: params[:album_id], borrower_id: @user)
+    @rental = Rental.new(rented: true, album_id: params[:album_id], borrower_id: current_user.id)
     @rental.save
     @rental.album.available = false
+    @album = @rental.album
     redirect_to album_rental_path(@rental)
   end
 

@@ -1,0 +1,26 @@
+<h2>Bienvenue <%= @user.first_name %></h2>
+
+<%= link_to 'Ajouter un album', new_album_path %>
+
+<h3>Mes BD</h3>
+
+<% if @user.albums.length != 0 %>
+  <ul>
+    <% @user.albums.each do |element| %>
+      <li><%= element.comic.title %></li>
+    <% end %>
+  </ul>
+  <% else %>
+  <p>Vous n'avez encore aucune BD</p>
+<% end %>
+
+
+  <h3>Mes locations en cours</h3>
+  <% if @user.rentals.length != 0 %>
+    <% @user.rentals.album.each do |album| %>
+      <li><%= album.comic.title %></li>
+      <% end %>
+    <% else %>
+      <p>Vous n'avez aucune location en cours</p>
+
+<% end %>

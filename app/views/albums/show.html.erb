@@ -8,5 +8,5 @@
 <% if current_user.id == @album.user.id %>
   <%= link_to 'Modifier', edit_album_path(@album), class: 'btn btn-primary' %>
   <% else %>
-  <%= link_to 'Emprunter', album_rentals_path(@album) %>
+  <%= link_to 'Emprunter', album_rentals_path(@album), class: 'btn btn-primary', method: :post %>
   <% end %>
