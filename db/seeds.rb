@@ -140,119 +140,117 @@ end
 
 puts 'Seeding of Comics .... Finished ..............!'
 
-puts 'Creating 15 Albums ...............'
+# puts 'Creating 15 Albums ...............'
 
-new_albums = [
-  { user_id: 1,
-    comic_id: 1,
-    description: 'Description album 1',
-    available: true },
-  { user_id: 2,
-    comic_id: 1,
-    description: 'Description album 2',
-    available: false },
-  { user_id: 5,
-    comic_id: 2,
-    description: 'Description album 3',
-    available: false },
-  { user_id: 4,
-    comic_id: 14,
-    description: 'Description album 4',
-    available: true },
-  { user_id: 4,
-    comic_id: 15,
-    description: 'Description album 5',
-    available: true },
-  { user_id: 3,
-    comic_id: 9,
-    description: 'Description album 6',
-    available: true },
-  { user_id: 3,
-    comic_id: 10,
-    description: 'Description album 7',
-    available: true },
-  { user_id: 2,
-    comic_id: 7,
-    description: 'Description album 8',
-    available: false },
-  { user_id: 2,
-    comic_id: 8,
-    description: 'Description album 9',
-    available: true },
-  { user_id: 1,
-    comic_id: 3,
-    description: 'Description album 10',
-    available: false },
-  { user_id: 1,
-    comic_id: 4,
-    description: 'Description album 11',
-    available: true },
-  { user_id: 2,
-    comic_id: 11,
-    description: 'Description album 12',
-    available: true },
-  { user_id: 2,
-    comic_id: 12,
-    description: 'Description album 13',
-    available: true },
-  { user_id: 5,
-    comic_id: 12,
-    description: 'Description album 14',
-    available: true },
-  { user_id: 5,
-    comic_id: 13,
-    description: 'Description album 15',
-    available: true }
-]
+# new_albums = [
+#   { user_id: 1,
+#     comic_id: 1,
+#     description: 'Description album 1',
+#     available: true },
+#   { user_id: 2,
+#     comic_id: 1,
+#     description: 'Description album 2',
+#     available: false },
+#   { user_id: 5,
+#     comic_id: 2,
+#     description: 'Description album 3',
+#     available: false },
+#   { user_id: 4,
+#     comic_id: 14,
+#     description: 'Description album 4',
+#     available: true },
+#   { user_id: 4,
+#     comic_id: 15,
+#     description: 'Description album 5',
+#     available: true },
+#   { user_id: 3,
+#     comic_id: 9,
+#     description: 'Description album 6',
+#     available: true },
+#   { user_id: 3,
+#     comic_id: 10,
+#     description: 'Description album 7',
+#     available: true },
+#   { user_id: 2,
+#     comic_id: 7,
+#     description: 'Description album 8',
+#     available: false },
+#   { user_id: 2,
+#     comic_id: 8,
+#     description: 'Description album 9',
+#     available: true },
+#   { user_id: 1,
+#     comic_id: 3,
+#     description: 'Description album 10',
+#     available: false },
+#   { user_id: 1,
+#     comic_id: 4,
+#     description: 'Description album 11',
+#     available: true },
+#   { user_id: 2,
+#     comic_id: 11,
+#     description: 'Description album 12',
+#     available: true },
+#   { user_id: 2,
+#     comic_id: 12,
+#     description: 'Description album 13',
+#     available: true },
+#   { user_id: 5,
+#     comic_id: 12,
+#     description: 'Description album 14',
+#     available: true },
+#   { user_id: 5,
+#     comic_id: 13,
+#     description: 'Description album 15',
+#     available: true }
+# ]
 
-new_albums.each do |album|
-  Album.create(
-    user_id: album[:user_id],
-    comic_id: album[:comic_id],
-    description: album[:description],
-    available: album[:available]
-  )
-end
+# new_albums.each do |album|
+#   Album.create(
+#     user_id: album[:user_id],
+#     comic_id: album[:comic_id],
+#     description: album[:description],
+#     available: album[:available]
+#   )
+# end
 
-puts 'Seeding of Albums .... Finished ..............!'
+# puts 'Seeding of Albums .... Finished ..............!'
 
-puts 'Creating 5 Rentals ...............'
+# puts 'Creating 5 Rentals ...............'
 
-new_rentals = [
-  { album_id: 3,
-    lender_id: 5,
-    borrower_id: 1,
-    status: 'Progress' },
-  { album_id: 1,
-    lender_id: 1,
-    borrower_id: 3,
-    status: 'Finished' },
-  { album_id: 2,
-    lender_id: 2,
-    borrower_id: 5,
-    status: 'Progress' },
-  { album_id: 8,
-    lender_id: 2,
-    borrower_id: 4,
-    status: 'Progress' },
-  { album_id: 10,
-    lender_id: 1,
-    borrower_id: 2,
-    status: 'Progress' }
-]
+# new_rentals = [
+#   { album_id: 3,
+#     lender_id: 5,
+#     borrower_id: 1,
+#     status: 'Progress' },
+#   { album_id: 1,
+#     lender_id: 1,
+#     borrower_id: 3,
+#     status: 'Finished' },
+#   { album_id: 2,
+#     lender_id: 2,
+#     borrower_id: 5,
+#     status: 'Progress' },
+#   { album_id: 8,
+#     lender_id: 2,
+#     borrower_id: 4,
+#     status: 'Progress' },
+#   { album_id: 10,
+#     lender_id: 1,
+#     borrower_id: 2,
+#     status: 'Progress' }
+# ]
 
-new_rentals.each do |rental|
-  Rental.create(
-    album_id: rental[:album_id],
-    lender_id: rental[:lender_id],
-    isbn: rental[:isbn],
-    artwork: rental[:artwork],
-    category: rental[:category]
-  )
-end
+# new_rentals.each do |rental|
+#   Rental.create(
+#     album_id: rental[:album_id],
+#     borrower_id: rental[:borrower_id],
+#     rented: false
+#   )
+# end
 
-puts 'Seeding of Rentals .... Finished ..............!'
+# puts 'Seeding of Rentals .... Finished ..............!'
 
-puts 'Seeding is ...'
-puts 'OVER ....'
-puts 'Cheers world!'
+# puts 'Seeding is ...'
+# puts 'OVER ....'
+# puts 'Cheers world!'
