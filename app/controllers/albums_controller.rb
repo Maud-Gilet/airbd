@@ -3,19 +3,25 @@ class AlbumsController < ApplicationController
 
   def index
     @albums = Album.all
+    # Scope from Authorization
+    # @albums = policy_scope(Album)
+  end
+
+  def show
   end
 
   def new
     @album = Album.new
+    authorize @album
   end
 
   def create
-    @user = current_user
     @album = Album.new(album_params)
-    @album.user = @user
+    @album.user = current_user
+    authorize @album
     @album.save
     if @album.save
-      redirect_to album_path(@album)
+      redirect_to album_path(@album), notice: 'Votre album a bien été créé.'
     else
       render :new
     end
@@ -26,16 +32,18 @@ class AlbumsController < ApplicationController
 
   def update
     @album.update(album_params)
-    redirect_to album_path(@album)
-  end
-
-  def show
+    if @album.update(album_params)
+      redirect_to album_path(@album), notice: 'Votre album a bien été mis à jour.'
+    else
+      render :edit
+    end
   end
 
   private
 
   def set_album
     @album = Album.find(params[:id])
+    authorize @album
   end
 
   def album_params

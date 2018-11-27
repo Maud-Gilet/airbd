@@ -3,13 +3,17 @@ class RentalsController < ApplicationController
 
   def new
     @rental = Rental.new
+    authorize @rental
   end
 
   def create
     @album = Album.find(params[:album_id])
     @rental = Rental.new(rented: true, album_id: @album.id, user_id: current_user.id)
     @rental.save
-    redirect_to album_rental_path(@album, @rental)
+    if @rental.save
+      redirect_to album_rental_path(@album, @rental)
+    else
+      render :new
   end
 
   def show
@@ -19,5 +23,6 @@ class RentalsController < ApplicationController
 
   def set_rental
     @rental = Rental.find(params[:id])
+    authorize @rental
   end
 end
