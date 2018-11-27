@@ -5,9 +5,9 @@
     <%= f.input :description,
                 required: true,
                 autofocus: true %>
-    <%= f.input :available, as: :boolean, :input_html => { :checked => true }, checked_value: true, unchecked_value: false %>
-
     <%= f.association :comic, :collection => Comic.all.order(:title) %>
+
+    <%= f.input :available, label: 'Disponible pour un prêt?', as: :boolean, :input_html => { :checked => true }, checked_value: 'true', unchecked_value: 'false' %>
   </div>
 
   <div class="form-actions">
