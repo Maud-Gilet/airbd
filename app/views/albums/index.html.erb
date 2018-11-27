@@ -3,12 +3,22 @@
 <ul>
   <% albums_sorted = @albums.sort_by { |album| album.comic.title.downcase } %>
   <% albums_sorted.each do |album| %>
-  <% if album.available == true %>
-    <li>
-      Titre : <%= album.comic.title %> <br>
-      Localisation : <%= album.user.address %>
-      <%= link_to 'Détails', album_path(album) %>
-    </li>
+    <% if album.available == true %>
+      <% if album.rentals.length == 0 %>
+        <li>
+          Titre : <strong><%= album.comic.title %></strong> <br>
+          Localisation : <%= album.user.address %>
+          <%= link_to 'Détails', album_path(album) %>
+          <i class="fas fa-square" style=" color: green;"></i>
+        </li>
+      <%else %>
+        <li>
+          Titre : <%= album.comic.title %> <br>
+          Localisation : <%= album.user.address %>
+          <%= link_to 'Détails', album_path(album) %>
+          <i class="fas fa-square" style=" color: red;"></i>
+        </li>
+      <%end%>
     <% end %>
   <% end %>
 </ul>
