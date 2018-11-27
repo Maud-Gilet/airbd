@@ -1,6 +1,6 @@
 <h3>Merci et bravo!</h3>
 <p>Vous avez loué <%= @rental.album.comic.title %></p>
 
-<%= link_to 'Retourner au profil', user_path(@rental.user.id) %>
+<%= link_to 'Retourner au profil', current_user_profile_path %>
 
 <%= link_to 'Choisir une autre BD', albums_path %>
