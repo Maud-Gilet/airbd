@@ -4,8 +4,6 @@
     <ul>
     <div class="cards">
 
-
-
       <h2>Découvrez les BD près de chez vous</h2>
 
       <% albums_sorted = @albums.sort_by { |album| album.comic.title.downcase } %>
@@ -20,28 +18,7 @@
               <i class="fas fa-square" style=" color: green;"></i>
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#demandeEmpruntModal">Contacter le propriétaire </button>
               <div class="modal fade" id="demandeEmpruntModal" tabindex="-1" role="dialog" aria-labelledby="demandeEmpruntModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h4 class="modal-title" id="demandeEmpruntModalLabel">Nouveau message à <%= album.user.first_name %> <br>
-                        pour <%= album.comic.title %></h4>
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <form>
-                        <div class="form-group">
-                          <label for="message-text" class="col-form-label">Message :</label>
-                          <textarea class="form-control" id="message-text"></textarea>
-                        </div>
-                      </form>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                      <button type="button" class="btn btn-primary">Envoyer</button>
-                    </div>
-                  </div>
-                </div>
+                <%= render 'modal', album: album %>
               </div>
             </li>
           <%else %>
@@ -53,35 +30,12 @@
               <i class="fas fa-square" style=" color: red;"></i>
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#demandeEmpruntModal">Contacter le propriétaire </button>
               <div class="modal fade" id="demandeEmpruntModal" tabindex="-1" role="dialog" aria-labelledby="demandeEmpruntModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h4 class="modal-title" id="demandeEmpruntModalLabel">Nouveau message à <%= album.user.first_name %> <br>
-                        pour <%= album.comic.title %></h4>
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <form>
-                        <div class="form-group">
-                          <label for="message-text" class="col-form-label">Message :</label>
-                          <textarea class="form-control" id="message-text"></textarea>
-                        </div>
-                      </form>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                      <button type="button" class="btn btn-primary">Envoyer</button>
-                    </div>
-                  </div>
-                </div>
+                <%= render 'modal', album: album %>
               </div>
             </li>
           <%end%>
         <% end %>
       <% end %>
-
-
     </div>
     </ul>
   </div>
