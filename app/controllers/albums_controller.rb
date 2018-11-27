@@ -14,7 +14,11 @@ class AlbumsController < ApplicationController
     @album = Album.new(album_params)
     @album.user = @user
     @album.save
-    redirect_to album_path(@album)
+    if @album.save
+      redirect_to album_path(@album)
+    else
+      render :new
+    end
   end
 
   def edit
