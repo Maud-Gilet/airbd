@@ -2,7 +2,6 @@
 <h3><%= @album.comic.author %></h3>
 
 <p><%= @album.description %></p>
-<p><%= @album.available %></p>
 <p><%= @album.user.first_name %> <%= @album.user.last_name %></p>
 
 <% if current_user.id == @album.user.id %>
@@ -15,7 +14,8 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="demandeEmpruntModalLabel">Nouveau message à <%= @album.user.first_name %></h4>
+        <h4 class="modal-title" id="demandeEmpruntModalLabel">Nouveau message à <%= @album.user.first_name %> <br>
+          pour <%= @album.comic.title %></h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
