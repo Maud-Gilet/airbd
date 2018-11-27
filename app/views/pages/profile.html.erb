@@ -17,8 +17,8 @@
 
   <h3>Mes locations en cours</h3>
   <% if @user.rentals.length != 0 %>
-    <% @user.rentals.album.each do |album| %>
-      <li><%= album.comic.title %></li>
+    <% @user.rentals.each do |rental| %>
+      <li><%= rental.album.comic.title %></li>
       <% end %>
     <% else %>
       <p>Vous n'avez aucune location en cours</p>

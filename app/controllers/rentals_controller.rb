@@ -6,11 +6,12 @@ class RentalsController < ApplicationController
   end
 
   def create
-    @rental = Rental.new(rented: true, album_id: params[:album_id], borrower_id: current_user.id)
+    @album = Album.find(params[:album_id])
+    @lender = @album.user
+    @rental = Rental.new(lender_id: @lender.id, rented: true, album_id: @album.id, borrower_id: current_user.id)
     @rental.save
-    @rental.album.available = false
-    @album = @rental.album
-    redirect_to album_rental_path(@rental)
+    @album.update(available: false)
+    redirect_to album_rental_path(@album, @rental)
   end
 
   def show
