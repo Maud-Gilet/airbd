@@ -1,7 +1,8 @@
 <h1>Tous les albums !</h1>
 
 <ul>
-  <% @albums.each do |album| %>
+  <% albums_sorted = @albums.sort_by { |album| album.comic.title.downcase } %>
+  <% albums_sorted.each do |album| %>
   <li>
     Titre : <%= album.comic.title %> <br>
     Statut : <%= album.available %> <br>
