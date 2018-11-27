@@ -5,7 +5,7 @@
     <%= f.input :description,
                 required: true,
                 autofocus: true %>
-    <%= f.input :available, as: :boolean, checked_value: true, unchecked_value: false %>
+    <%= f.input :available, as: :boolean, :input_html => { :checked => true }, checked_value: true, unchecked_value: false %>
 
     <%= f.association :comic, :collection => Comic.all.order(:title) %>
   </div>
