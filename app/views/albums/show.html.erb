@@ -8,18 +8,16 @@
 <% if current_user.id == @album.user.id %>
   <%= link_to 'Modifier', edit_album_path(@album), class: 'btn btn-primary' %>
   <% else %>
-  <%= link_to 'Contacter le propriétaire', album_rentals_path(@album), class: 'btn btn-primary', method: :post %>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#demandeEmpruntModal">Contacter le propriétaire
+  </button>
   <% end %>
-
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#demandeEmpruntModal">Contacter le propriétaire
-</button>
-
 
 <div class="modal fade" id="demandeEmpruntModal" tabindex="-1" role="dialog" aria-labelledby="demandeEmpruntModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="demandeEmpruntModalLabel">Nouveau message à <%= @album.user.first_name %></h4>
+        <h4 class="modal-title" id="demandeEmpruntModalLabel">Nouveau message à <%= @album.user.first_name %> <br>
+          pour <%= @album.comic.title %></h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
