@@ -2,11 +2,12 @@
 
 <ul>
   <% @albums.each do |album| %>
-  <li>
-    Titre : <%= album.comic.title %> <br>
-    Statut : <%= album.available %> <br>
-    Localisation : <%= album.user.address %>
-    <%= link_to 'Détails', album_path(album) %>
-  </li>
+  <% if album.available == true %>
+    <li>
+      Titre : <%= album.comic.title %> <br>
+      Localisation : <%= album.user.address %>
+      <%= link_to 'Détails', album_path(album) %>
+    </li>
+    <% end %>
   <% end %>
 </ul>
