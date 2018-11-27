@@ -8,5 +8,34 @@
 <% if current_user.id == @album.user.id %>
   <%= link_to 'Modifier', edit_album_path(@album), class: 'btn btn-primary' %>
   <% else %>
-  <%= link_to 'Emprunter', album_rentals_path(@album), class: 'btn btn-primary', method: :post %>
+  <%= link_to 'Contacter le propriétaire', album_rentals_path(@album), class: 'btn btn-primary', method: :post %>
   <% end %>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#demandeEmpruntModal">Contacter le propriétaire
+</button>
+
+
+<div class="modal fade" id="demandeEmpruntModal" tabindex="-1" role="dialog" aria-labelledby="demandeEmpruntModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="demandeEmpruntModalLabel">Nouveau message à <%= @album.user.first_name %></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Message :</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+        <button type="button" class="btn btn-primary">Envoyer</button>
+      </div>
+    </div>
+  </div>
+</div>
