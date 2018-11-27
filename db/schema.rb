@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_26_142657) do
+ActiveRecord::Schema.define(version: 2018_11_27_113848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,13 +39,11 @@ ActiveRecord::Schema.define(version: 2018_11_26_142657) do
   create_table "rentals", force: :cascade do |t|
     t.bigint "album_id"
     t.boolean "rented"
-    t.bigint "lender_id"
-    t.bigint "borrower_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["album_id"], name: "index_rentals_on_album_id"
-    t.index ["borrower_id"], name: "index_rentals_on_borrower_id"
-    t.index ["lender_id"], name: "index_rentals_on_lender_id"
+    t.index ["user_id"], name: "index_rentals_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -68,6 +66,4 @@ ActiveRecord::Schema.define(version: 2018_11_26_142657) do
   add_foreign_key "albums", "comics"
   add_foreign_key "albums", "users"
   add_foreign_key "rentals", "albums"
-  add_foreign_key "rentals", "users", column: "borrower_id"
-  add_foreign_key "rentals", "users", column: "lender_id"
 end
