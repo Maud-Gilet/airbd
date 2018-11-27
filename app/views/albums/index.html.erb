@@ -1,77 +1,45 @@
-<h1>Tous les albums !</h1>
+<div class="main-container">
 
-<ul>
-  <% albums_sorted = @albums.sort_by { |album| album.comic.title.downcase } %>
-  <% albums_sorted.each do |album| %>
-    <% if album.available == true %>
-      <% if album.rentals.length == 0 %>
-        <li>
-          Titre : <strong><%= album.comic.title %></strong> <br>
-          Localisation : <%= album.user.address %>
-          <%= link_to 'Détails', album_path(album) %>
-          <i class="fas fa-square" style=" color: green;"></i>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#demandeEmpruntModal">Contacter le propriétaire </button>
-          <div class="modal fade" id="demandeEmpruntModal" tabindex="-1" role="dialog" aria-labelledby="demandeEmpruntModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4 class="modal-title" id="demandeEmpruntModalLabel">Nouveau message à <%= album.user.first_name %> <br>
-                    pour <%= album.comic.title %></h4>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <form>
-                    <div class="form-group">
-                      <label for="message-text" class="col-form-label">Message :</label>
-                      <textarea class="form-control" id="message-text"></textarea>
-                    </div>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                  <button type="button" class="btn btn-primary">Envoyer</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-      <%else %>
-        <li>
-          Titre : <%= album.comic.title %> <br>
-          Localisation : <%= album.user.address %>
-          <%= link_to 'Détails', album_path(album) %>
-          <i class="fas fa-square" style=" color: red;"></i>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#demandeEmpruntModal">Contacter le propriétaire </button>
-          <div class="modal fade" id="demandeEmpruntModal" tabindex="-1" role="dialog" aria-labelledby="demandeEmpruntModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4 class="modal-title" id="demandeEmpruntModalLabel">Nouveau message à <%= album.user.first_name %><br>
-                    pour <%= album.comic.title %></h4>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <form>
-                    <div class="form-group">
-                      <label for="message-text" class="col-form-label">Message :</label>
-                      <textarea class="form-control" id="message-text"></textarea>
-                    </div>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                  <button type="button" class="btn btn-primary">Envoyer</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-      <%end%>
-    <% end %>
-  <% end %>
-</ul>
+  <div class="cards-container row">
+    <ul>
+    <div class="cards">
 
+      <h2>Découvrez les BD près de chez vous</h2>
+
+      <% albums_sorted = @albums.sort_by { |album| album.comic.title.downcase } %>
+      <% albums_sorted.each do |album| %>
+        <% if album.available == true %>
+          <% if album.rentals.length == 0 %>
+            <li>
+              <strong><%= album.comic.title %></strong> <br>
+              Localisation : <%= album.user.address %>
+              <br>
+              <%= link_to 'Détails', album_path(album) %>
+              <i class="fas fa-square" style=" color: green;"></i>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#demandeEmpruntModal">Contacter le propriétaire </button>
+              <div class="modal fade" id="demandeEmpruntModal" tabindex="-1" role="dialog" aria-labelledby="demandeEmpruntModalLabel" aria-hidden="true">
+                <%= render 'modal', album: album %>
+              </div>
+            </li>
+          <%else %>
+            <li>
+              <strong><%= album.comic.title %> </strong><br>
+              Localisation : <%= album.user.address %>
+              <br>
+              <%= link_to 'Détails', album_path(album) %>
+              <i class="fas fa-square" style=" color: red;"></i>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#demandeEmpruntModal">Contacter le propriétaire </button>
+              <div class="modal fade" id="demandeEmpruntModal" tabindex="-1" role="dialog" aria-labelledby="demandeEmpruntModalLabel" aria-hidden="true">
+                <%= render 'modal', album: album %>
+              </div>
+            </li>
+          <%end%>
+        <% end %>
+      <% end %>
+    </div>
+    </ul>
+  </div>
+
+  <div id="map">
+  </div>
+</div>

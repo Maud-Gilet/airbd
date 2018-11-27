@@ -1,0 +1,61 @@
+<div>
+  <div>
+    <h2>Bienvenue <%= @user.first_name %></h2>
+  </div>
+  <div>
+    <%= link_to edit_user_registration_path do %>
+      <i class="fas fa-user-edit">Edit</i>
+    <% end %>
+  </div>
+</div>
+
+<div>
+  <div>
+    <h3>Mes BD</h3>
+  </div>
+  <div>
+    <%= link_to new_album_path do %>
+      <i class="fas fa-plus-circle">Ajouter un album</i>
+    <% end %>
+  </div>
+</div>
+
+<div>
+  <% if @user.albums.length != 0 %>
+    <table>
+      <tbody>
+        <% @user.albums.each do |element| %>
+          <tr>
+            <td><%= element.comic.title %></td>
+            <td>oo</td>
+            <td>&&</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% else %>
+    <p>Vous n'avez encore aucune BD</p>
+  <% end %>
+</div>
+
+<div>
+  <h3>Mes locations en cours</h3>
+</div>
+
+<div>
+  <% if @user.rentals.length != 0 %>
+    <table>
+      <tbody>
+        <% @user.rentals.each do |rental| %>
+          <tr>
+            <td><%= rental.album.comic.title %></td>
+            <td>Propriétaire: <%= "#{rental.album.user.first_name} #{rental.album.user.last_name}" %></td>
+            <td>Depuis le <%= "#{rental.created_at.day}/#{rental.created_at.month}/#{rental.created_at.year}" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+      <p>Vous n'avez aucune location en cours</p>
+  <% end %>
+</div>

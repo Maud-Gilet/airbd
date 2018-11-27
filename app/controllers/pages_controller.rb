@@ -4,7 +4,10 @@ class PagesController < ApplicationController
   def home
   end
 
-  def profile
+  def dashboard
     @user = current_user
+    if params[:message]
+      flash[:notice] = 'Votre message a bien été envoyé'
+    end
   end
 end
