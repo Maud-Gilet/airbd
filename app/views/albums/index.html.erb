@@ -3,14 +3,24 @@
 <ul>
   <% albums_sorted = @albums.sort_by { |album| album.comic.title.downcase } %>
   <% albums_sorted.each do |album| %>
-  <% if album.available == true %>
-    <li>
-      Titre : <%= album.comic.title %> <br>
-      Localisation : <%= album.user.address %>
-      <%= link_to 'Détails', album_path(album) %>
-     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#demandeEmpruntModal">Contacter le propriétaire
-      </button>
-    </li>
+    <% if album.available == true %>
+      <% if album.rentals.length == 0 %>
+        <li>
+          Titre : <strong><%= album.comic.title %></strong> <br>
+          Localisation : <%= album.user.address %>
+          <%= link_to 'Détails', album_path(album) %>
+          <i class="fas fa-square" style=" color: green;"></i>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#demandeEmpruntModal">Contacter le propriétaire </button>
+        </li>
+      <%else %>
+        <li>
+          Titre : <%= album.comic.title %> <br>
+          Localisation : <%= album.user.address %>
+          <%= link_to 'Détails', album_path(album) %>
+          <i class="fas fa-square" style=" color: red;"></i>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#demandeEmpruntModal">Contacter le propriétaire </button>
+        </li>
+      <%end%>
     <% end %>
   <% end %>
 </ul>
