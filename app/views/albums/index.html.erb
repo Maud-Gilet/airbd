@@ -1,10 +1,8 @@
-<div class="container albums-index-container ">
-  <div class="row">
-    <div class="col-xs-12 col-sm-7 col-md-4 col-lg-3">
+<div class="main-container">
 
-    <div class="cards">
+  <div class="container albums-index-container">
+    <h3>Découvrez les BD autour de chez vous</h3>
 
-      <h2>Découvrez les BD près de chez vous</h2>
 
       <% albums_sorted = @albums.sort_by { |album| album.comic.title.downcase } %>
       <% albums_sorted.each do |album| %>
@@ -36,8 +34,8 @@
           <%end%>
         <% end %>
       <% end %>
-    </div>
-    </ul>
+
+
   </div>
 
   <div id="map" style="width: 100%;
@@ -45,4 +43,5 @@
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
+
 </div>
