@@ -23,7 +23,7 @@ new_users = [
     admin: true },
   { first_name: 'Maud',
     last_name: 'Gilet',
-    address: '16 rue de Sèvres 75007 Paris',
+    address: '16 rue du Sentier 75002 Paris',
     email: 'maud.gilet@gmail.com',
     password: 'admin$rocket',
     admin: true },
@@ -47,7 +47,7 @@ new_users.each do |user|
     last_name: user[:last_name],
     address: user[:address],
     email: user[:email],
-    password: user[:password]
+    password: user[:password],
     admin: user[:admin]
   )
 end
