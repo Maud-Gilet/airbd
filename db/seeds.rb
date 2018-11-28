@@ -9,6 +9,9 @@ puts 'Deleting all Users'
 
 User.delete_all
 
+puts 'Delete users'
+User.destroy_all
+
 puts 'Creating 5 Users'
 
 new_users = [
@@ -39,7 +42,7 @@ new_users = [
 ]
 
 new_users.each do |user|
-  User.create(
+  User.create!(
     first_name: user[:first_name],
     last_name: user[:last_name],
     address: user[:address],
