@@ -2,7 +2,17 @@ class AlbumsController < ApplicationController
   before_action :set_album, only: [:show, :edit, :update]
 
   def index
+
+    @users = User.where.not(latitude: nil, longitude: nil)
+
     @albums = Album.all
+
+    @markers = @users.map do |user|
+      {
+        lng: user.longitude,
+        lat: user.latitude
+      }
+    end
   end
 
   def new

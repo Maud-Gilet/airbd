@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts 'Delete users'
+User.destroy_all
+
 puts 'Creating 5 Users'
 
 new_users = [
@@ -29,15 +32,10 @@ new_users = [
     address: '96 rue des Moines 75017 Paris',
     email: 'mribot@hotmail.fr',
     password: 'admin$rocket' },
-  { first_name: 'Robert',
-    last_name: 'Jean',
-    address: '23 Place Bellecour, 69002 Lyon',
-    email: 'jrobert@yahoo.fr',
-    password: 'randuser$rocket' }
 ]
 
 new_users.each do |user|
-  User.create(
+  User.create!(
     first_name: user[:first_name],
     last_name: user[:last_name],
     address: user[:address],
