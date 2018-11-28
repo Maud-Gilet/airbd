@@ -13,7 +13,7 @@ class ComicsController < ApplicationController
 
     @comic = Comic.new(request_informations(title_query, isbn_query))
     if @comic.save
-      redirect_to new_album_path(comic_id: "#{@comic.id}"), notice: "#{@comic.title} a bien été créé."
+      redirect_to new_album_path(comic_id: @comic.id.to_s), notice: "#{@comic.title} a bien été créé."
     else
       render :new
     end
@@ -26,13 +26,11 @@ class ComicsController < ApplicationController
   end
 
   def api_url(title_query, isbn_query)
-    api_key = 'AIzaSyCE2I7XkcStaYjq5CGZc0uqyGafVhQkpH4'
     url_raw = 'https://www.googleapis.com/books/v1/volumes?q='
-
     query_title = title_query
     query_isbn = isbn_query
 
-    "#{url_raw}#{query_title}+isbn:#{query_isbn}&key=#{api_key}"
+    "#{url_raw}#{query_title}+isbn:#{query_isbn}&key=#{ENV['GOOGLE_API_KEY']}"
   end
 
   def request_informations(title_query, isbn_query)
