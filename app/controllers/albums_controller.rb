@@ -10,7 +10,8 @@ class AlbumsController < ApplicationController
     @markers = @users.map do |user|
       {
         lng: user.longitude,
-        lat: user.latitude
+        lat: user.latitude,
+        infoWindow: render_to_string(partial: "infowindow", locals: { user: user})
       }
     end
   end
