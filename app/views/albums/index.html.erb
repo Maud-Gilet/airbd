@@ -2,43 +2,55 @@
 
   <div class="container albums-index-container">
     <h3>Découvrez les BD autour de chez vous</h3>
-
-
+    <div class='row'>
       <% albums_sorted = @albums.sort_by { |album| album.comic.title.downcase } %>
       <% albums_sorted.each do |album| %>
         <% if album.available == true %>
           <% if album.rentals.length == 0 %>
-            <li>
-              <strong><%= album.comic.title %></strong> <br>
-              Localisation : <%= album.user.address %>
-              <br>
-              <%= link_to 'Détails', album_path(album) %>
-              <i class="fas fa-square" style=" color: green;"></i>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#demandeEmpruntModal">Contacter le propriétaire </button>
-              <div class="modal fade" id="demandeEmpruntModal" tabindex="-1" role="dialog" aria-labelledby="demandeEmpruntModalLabel" aria-hidden="true">
-                <%= render 'modal', album: album %>
+            <div class="col-xs-12 col-sm-7 col-md-4 col-lg-3">
+              <div class="index-album-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(assets/images/test-cover.png);">
+                <div class="index-album-card-description">
+                  <p><strong><%= album.comic.title %></strong></p>
+                  <p>Localisation : <%= album.user.address %></p>
+                </div>
+                <div class="album-rental-status">
+                  <i class="fas fa-square" style=" color: green;"></i>
+                </div>
+                <div class='index-contact-btn'>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#demandeEmpruntModal">Contacter le propriétaire </button>
+                  <div class="modal fade" id="demandeEmpruntModal" tabindex="-1" role="dialog" aria-labelledby="demandeEmpruntModalLabel" aria-hidden="true">
+                  <%= render 'modal', album: album %>
+                  </div>
+                </div>
+                <%= link_to 'Info', album_path(album) %>
               </div>
-            </li>
+            </div>
           <%else %>
-            <li>
-              <strong><%= album.comic.title %> </strong><br>
-              Localisation : <%= album.user.address %>
-              <br>
-              <%= link_to 'Détails', album_path(album) %>
-              <i class="fas fa-square" style=" color: red;"></i>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#demandeEmpruntModal">Contacter le propriétaire </button>
-              <div class="modal fade" id="demandeEmpruntModal" tabindex="-1" role="dialog" aria-labelledby="demandeEmpruntModalLabel" aria-hidden="true">
-                <%= render 'modal', album: album %>
+            <div class="col-xs-12 col-sm-7 col-md-4 col-lg-3">
+              <div class="index-album-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('images/test-cover.png');">
+                <div class="index-album-card-description">
+                  <p><strong><%= album.comic.title %></strong></p>
+                  <p>Localisation : <%= album.user.address %></p>
+                </div>
+                <div class="album-rental-status">
+                  <i class="fas fa-square" style=" color: red;"></i>
+                </div>
+                <div class='index-contact-btn'>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#demandeEmpruntModal">Contacter le propriétaire </button>
+                  <div class="modal fade" id="demandeEmpruntModal" tabindex="-1" role="dialog" aria-labelledby="demandeEmpruntModalLabel" aria-hidden="true">
+                  <%= render 'modal', album: album %>
+                  </div>
+                </div>
+                <%= link_to 'Info', album_path(album) %>
               </div>
-            </li>
+            </div>
           <%end%>
         <% end %>
       <% end %>
-
-
+    </div>
   </div>
 
-  <div id="map" style="width: 100%;
+  <div id="map" style="width: 140%;
   height: calc(100vh - 70px);"
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
