@@ -7,9 +7,6 @@ class AlbumsController < ApplicationController
 
   def new
     @album = Album.new
-    p params
-    p params[:comic_id]
-    p params[:comic_id].nil?
     @album.comic = Comic.find(params[:comic_id]) unless params[:comic_id].nil?
   end
 
@@ -17,7 +14,6 @@ class AlbumsController < ApplicationController
     @user = current_user
     @album = Album.new(album_params)
     @album.user = @user
-    @album.save
     if @album.save
       redirect_to album_path(@album)
     else

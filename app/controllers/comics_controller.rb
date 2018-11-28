@@ -12,10 +12,6 @@ class ComicsController < ApplicationController
     isbn_query = comic_params[:isbn]
 
     @comic = Comic.new(request_informations(title_query, isbn_query))
-    @comic.save
-    puts "----------------"
-    p @comic
-    puts "----------------"
     if @comic.save
       redirect_to new_album_path(comic_id: "#{@comic.id}"), notice: "#{@comic.title} a bien été créé."
     else
