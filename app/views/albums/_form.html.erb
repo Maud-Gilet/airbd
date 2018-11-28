@@ -1,11 +1,19 @@
-<%= simple_form_for [@comic, album] do |f| %>
+<%= simple_form_for album do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
     <%= f.input :description,
                 required: true,
                 autofocus: true %>
-    <%= f.association :comic, :collection => Comic.all.order(:title) %>
+    <% if @comic %>
+      <%= f.association :comic, selected: @comic %>
+    <% else %>
+      <%= f.association :comic, :collection => Comic.all.order(:title) %>
+    <% end %>
+
+    <% if @comic.nil? %>
+      <%= render 'add-comic' %>
+    <% end %>
 
     <%= f.input :available, label: 'Disponible pour un prêt?', as: :boolean, :input_html => { :checked => true }, checked_value: 'true', unchecked_value: 'false' %>
   </div>

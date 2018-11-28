@@ -7,6 +7,10 @@ class AlbumsController < ApplicationController
 
   def new
     @album = Album.new
+    p params
+    p params[:comic_id]
+    p params[:comic_id].nil?
+    @album.comic = Comic.find(params[:comic_id]) unless params[:comic_id].nil?
   end
 
   def create

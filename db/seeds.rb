@@ -5,6 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts 'Deleting all Users'
+
+User.delete_all
 
 puts 'Creating 5 Users'
 
@@ -13,27 +16,26 @@ new_users = [
     last_name: 'Lioussou',
     address: '16 villa Gaudelet 75011 Paris',
     email: 'helene.lioussou@gmail.com',
-    password: 'admin$rocket' },
+    password: 'admin$rocket',
+    admin: true },
   { first_name: 'Maud',
     last_name: 'Gilet',
     address: '16 rue de Sèvres 75007 Paris',
     email: 'maud.gilet@gmail.com',
-    password: 'admin$rocket' },
+    password: 'admin$rocket',
+    admin: true },
   { first_name: 'Léger',
     last_name: 'Jérôme',
     address: '42 rue des Vinaigriers 75010 Paris',
     email: 'jejelele12@gmail.com',
-    password: 'admin$rocket' },
+    password: 'admin$rocket',
+    admin: false },
   { first_name: 'Ribot',
     last_name: 'Mathieu',
     address: '96 rue des Moines 75017 Paris',
     email: 'mribot@hotmail.fr',
-    password: 'admin$rocket' },
-  { first_name: 'Robert',
-    last_name: 'Jean',
-    address: '23 Place Bellecour, 69002 Lyon',
-    email: 'jrobert@yahoo.fr',
-    password: 'randuser$rocket' }
+    password: 'admin$rocket',
+    admin: false },
 ]
 
 new_users.each do |user|
@@ -43,10 +45,15 @@ new_users.each do |user|
     address: user[:address],
     email: user[:email],
     password: user[:password]
+    admin: user[:admin]
   )
 end
 
 puts 'Seeding of Users .... Finished ..............!'
+
+puts 'Deleting all Comics'
+
+Comic.delete_all
 
 puts 'Creating 15 Comics ...............'
 
@@ -140,6 +147,10 @@ end
 
 puts 'Seeding of Comics .... Finished ..............!'
 
+# puts 'Deleting all Albums'
+
+# Album.delete_all
+
 # puts 'Creating 15 Albums ...............'
 
 # new_albums = [
@@ -215,6 +226,10 @@ puts 'Seeding of Comics .... Finished ..............!'
 # end
 
 # puts 'Seeding of Albums .... Finished ..............!'
+
+# puts 'Deleting all Rentals'
+
+# Rental.delete_all
 
 # puts 'Creating 5 Rentals ...............'
 
