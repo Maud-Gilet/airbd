@@ -1,1 +1,10 @@
 // Specific CSS for your home-page
+.banner{
+  text-align: center;
+  background-image: url("landing-image.jpg");
+  background-size: cover;
+  padding: 300px;
+  color: white;
+  text-shadow: 1px 1px 5px black;
+  height: 100%;
+}
