@@ -1,0 +1,12 @@
+<%= simple_form_for comic do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title, label: 'Quel est le titre de votre BD?' %>
+    <%= f.input :isbn, label: 'Quel est le code ISBN de votre BD?' %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
