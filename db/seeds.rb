@@ -47,7 +47,8 @@ new_users.each do |user|
     last_name: user[:last_name],
     address: user[:address],
     email: user[:email],
-    password: user[:password]
+    password: user[:password],
+    admin: user[:admin]
   )
 end
 
