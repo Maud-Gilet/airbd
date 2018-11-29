@@ -1,10 +1,44 @@
 // Specific CSS for your home-page
+
+.homeland{
+  text-align: center;
+  background-color: #020A57;
+  padding: 10px;
+  color: white;
+  text-shadow: 1px 1px 5px black;
+}
+
+
 .banner{
   text-align: center;
   background-image: asset-url("landing-image.jpg");
   background-size: cover;
-  padding: 300px;
+}
+.steps{
+  display: flex;
+  text-shadow: 1px 1px 5px black;
+  text-align: center;
+  justify-content: center;
+}
+
+.step {
+  text-align: center;
+  margin: 50px;
   color: white;
   text-shadow: 1px 1px 5px black;
-  height: 100%;
+  background-color: rgba(2,10,87, 0.8);
+  padding: 10px;
+}
+
+.video {
+  display: flex;
+  justify-content: center;
+  background-color: #020A57;
+}
+
+#myVideo {
+  width: 90%;
+  height: 600px;
+  margin-top: 60px;
+  margin-bottom: 60px;
 }
