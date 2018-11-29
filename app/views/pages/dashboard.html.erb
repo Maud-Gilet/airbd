@@ -56,9 +56,15 @@
     <div class='container user-library-display'>
       <% if @user.albums.length != 0 %>
         <% @user.albums.each do |album| %>
-          <div class="user-album-card" style="background-image: url(<%= album.comic.artwork %>);">
-            <div class="user-album-card-description">
-              <p> <%= album.comic.title %> </p>
+          <% if album.available == true %>
+            <div class="user-album-card border-available" style="background-image: url(<%= album.comic.artwork %>);">
+          <% else %>
+            <div class="user-album-card border-unavailable" style="background-image: url(<%= album.comic.artwork %>);">
+          <% end %>
+            <div class="card-hover">
+              <div class="user-album-card-description">
+                <h5> <%= album.comic.title %> </h5>
+              </div>
             </div>
             <div class= "user-album-card-link">
               <p><%= link_to 'Modifier', edit_album_path(album) %></p>
