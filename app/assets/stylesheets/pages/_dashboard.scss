@@ -31,8 +31,11 @@
 #user-library-container{
   grid-row: 1 / span 2;
   grid-column: 1 / span 5;
+}
+.user-library-display{
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-start;
 }
 #user-rentals-container{
   grid-row: 3 / span 2;
