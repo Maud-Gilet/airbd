@@ -2,6 +2,9 @@
   color: black;
   text-shadow: none;
 }
+.modal-dialog {
+  margin: 80px auto;
+}
 .form-control::-webkit-input-placeholder {
   color: black;
 }
@@ -9,16 +12,23 @@
   color:red;
 }
 #message-text {
-  height: 120px;
+  height: 180px;
+  font-style: italic;
+  padding-top: 15px;
 }
 .modal-footer {
   .cancel-button{
-    background: $red;
-    color: white;
+    background: inherit;
+    color: $red;
     font-weight: bolder;
+    border: 1px solid $red;
+    border-radius: 5px;
   }
   .send-button {
-    background: $green;
+    background: inherit;
+    color: $green;
     font-weight: bolder;
+    border: 1px solid $green;
+    border-radius: 5px;
   }
 }

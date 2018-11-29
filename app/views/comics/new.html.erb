@@ -1,7 +1,8 @@
 <div class='container form-container'>
-  <h2>Ajouter une nouvelle référence de BD</h2>
-  <%= render 'form', comic: @comic %>
-</div>
-<div class='container form-container'>
-  <%= link_to "Revenir", new_album_path %>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 form-new">
+      <h3>Ajouter une nouvelle référence de BD</h3>
+      <%= render 'form', comic: @comic %>
+    </div>
+  </div>
 </div>
