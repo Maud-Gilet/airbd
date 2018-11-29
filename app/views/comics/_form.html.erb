@@ -6,6 +6,8 @@
     <%= f.input :isbn, label: 'Quel est le code ISBN de votre BD?' %>
   </div>
 
+  <%= render 'autocomplete-api' %>
+
   <div class="form-actions">
     <%= f.button :submit, 'Créer cette référence', class: 'btn-form-create' %>
   </div>

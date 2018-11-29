@@ -144,3 +144,15 @@
 .user-album-card-link:hover{
   opacity: 0.1;
 }
+
+.card-result-api-books {
+  background-color: white;
+  display: none;
+  border: 1px solid #CBCBCB;
+  padding-top: 5px;
+  padding-left: 15px;
+  & img {
+    padding-left: 40px;
+    padding-bottom: 10px;
+  }
+}
