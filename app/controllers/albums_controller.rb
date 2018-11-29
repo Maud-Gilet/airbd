@@ -6,7 +6,7 @@ class AlbumsController < ApplicationController
     @albums = policy_scope(Album)
     authorize @albums
 
-    @markers = @albums.map do |album|
+    @markers = @albums.where.not(user: current_user).map do |album|
       {
         lng: album.user.longitude,
         lat: album.user.latitude,
