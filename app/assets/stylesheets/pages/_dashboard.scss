@@ -104,4 +104,14 @@
 .user-album-card-link:hover{
   opacity: 0.1;
 }
+.user-message-display{
+  padding-left: 0px;
+  table {
+    font-size: 14px;
+    td {
+      padding: 2px 6px;
+      word-wrap: break-word;
+    }
+  }
+}
 
