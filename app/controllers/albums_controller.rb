@@ -7,12 +7,13 @@ class AlbumsController < ApplicationController
 
     @albums = Album.all
 
-    @markers = @users.map do |user|
+    @markers = @albums.map do |album|
       {
-        lng: user.longitude,
-        lat: user.latitude,
-        infoWindow: render_to_string(partial: "infowindow", locals: { user: user})
+        lng: album.user.longitude,
+        lat: album.user.latitude,
+        infoWindow: render_to_string(partial: "infowindow", locals: { album: album })
       }
+
     end
   end
 

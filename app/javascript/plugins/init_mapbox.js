@@ -34,7 +34,9 @@ const addMarkersToMap = (map, markers) => {
       .addTo(map);
   });
 
-fitMapToMarkers(map, markers);
+  addMarkersToMap(map, markers);
+  fitMapToMarkers(map, markers);
+
 
   }
 };
