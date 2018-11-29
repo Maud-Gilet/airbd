@@ -2,16 +2,15 @@ class AlbumsController < ApplicationController
   before_action :set_album, only: [:show, :edit, :update]
 
   def index
-
     @users = User.where.not(latitude: nil, longitude: nil)
-
-    @albums = Album.all
+    @albums = policy_scope(Album)
 
     # Scope from Authorization
     # @albums = policy_scope(Album)
   end
 
   def show
+    authorize @album
     @markers = @users.map do |user|
       {
         lng: user.longitude,
@@ -22,21 +21,20 @@ class AlbumsController < ApplicationController
 
   def new
     @album = Album.new
-    authorize @album
     @album.comic = Comic.find(params[:comic_id]) unless params[:comic_id].nil?
+    authorize @album
   end
 
   def create
     @album = Album.new(album_params)
     @album.user = current_user
-    authorize @album
-    @album.user = @user
 
     if @album.save
-      redirect_to album_path(@album), notice: 'Votre album a bien été créé.'
+      redirect_to current_user_dashboard_path, notice: 'Votre album a bien été créé.'
     else
       render :new
     end
+    authorize @album
   end
 
   def edit
@@ -45,7 +43,7 @@ class AlbumsController < ApplicationController
   def update
     @album.update(album_params)
     if @album.update(album_params)
-      redirect_to album_path(@album), notice: 'Votre album a bien été mis à jour.'
+      redirect_to current_user_dashboard_path, notice: 'Votre album a bien été mis à jour.'
     else
       render :edit
     end
