@@ -4,21 +4,16 @@
   <div class="form-inputs">
     <%= f.input :description,
                 required: true,
-                autofocus: true %>
-    <% if @comic %>
-      <%= f.association :comic, selected: @comic %>
-    <% else %>
-      <%= f.association :comic, :collection => Comic.all.order(:title) %>
-    <% end %>
+                autofocus: true,
+                label: 'Description' %>
+    <%= f.association :comic, :collection => Comic.all.order(:title), label: 'Référence BD' %>
 
-    <% if @comic.nil? %>
-      <%= render 'add-comic' %>
-    <% end %>
+    <%= render 'add-comic' %>
 
     <%= f.input :available, label: 'Disponible pour un prêt?', as: :boolean, :input_html => { :checked => true }, checked_value: 'true', unchecked_value: 'false' %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, "Créer l'album" %>
   </div>
 <% end %>

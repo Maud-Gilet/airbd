@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2018_11_28_132916) do
     t.string "isbn"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "pic"
   end
 
   create_table "rentals", force: :cascade do |t|
