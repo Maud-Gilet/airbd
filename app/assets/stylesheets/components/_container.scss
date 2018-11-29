@@ -1,12 +1,15 @@
 .main-container {
   display: flex;
 }
+
 .col{
   margin: 5px;
 }
-.albums-index-container{
+.albums-index-container {
   margin-top: 15px;
+  display:flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   justify-content: flex-start;
   text-align: center;
   & h3 {
@@ -14,3 +17,6 @@
   }
 }
 
+.text-align-center {
+  text-align: center;
+}
