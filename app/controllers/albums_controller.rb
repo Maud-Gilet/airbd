@@ -5,14 +5,15 @@ class AlbumsController < ApplicationController
     @users = User.where.not(latitude: nil, longitude: nil)
     @albums = policy_scope(Album)
     authorize @albums
-    
+
     @markers = @albums.map do |album|
       {
         lng: album.user.longitude,
         lat: album.user.latitude,
         infoWindow: render_to_string(partial: "infowindow", locals: { album: album })
       }
-   end
+    end
+  end
 
   def show
   end
