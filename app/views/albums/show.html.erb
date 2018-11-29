@@ -1,17 +1,36 @@
-<h2><%= @album.comic.title %></h2>
-<h3><%= @album.comic.author %></h3>
 
-<p><%= @album.description %></p>
-<p><%= @album.user.first_name %> <%= @album.user.last_name %></p>
+<div class="containershow">
+  <div class="bdcover">
+    <img class="bdshow" src='<%= @album.comic.artwork %>'>
+  </div>
 
-<% if current_user.id == @album.user.id %>
-  <%= link_to 'Modifier', edit_album_path(@album), class: 'btn btn-primary' %>
-  <% else %>
+  <div class="bdinfo">
+    <h2 class="fancy"><%= @album.comic.title %></h2>
+    <p><%= @album.comic.author %></p>
+    <p>Propriétaire : <%= @album.user.first_name %> <%= @album.user.last_name %></p>
+    <p>Sa description : <%= @album.description %></p>
 
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#demandeEmpruntModal">Contacter le propriétaire</button>
-  <% end %>
 
-<div class="modal fade" id="demandeEmpruntModal" tabindex="-1" role="dialog" aria-labelledby="demandeEmpruntModalLabel" aria-hidden="true">
-  <%= render 'modal', album: @album %>
+    <% if current_user.id == @album.user.id %>
+      <%= link_to 'Modifier', edit_album_path(@album), class: 'btn btn-primary' %>
+    <% else %>
+      <button type="button" class="btn btn-rose" data-toggle="modal" data-target="#demandeEmpruntModal">Contacter le propriétaire</button>
+    <% end %>
 
+    <div class="modal fade" id="demandeEmpruntModal" tabindex="-1" role="dialog" aria-labelledby="demandeEmpruntModalLabel" aria-hidden="true">
+    <%= render 'modal', album: @album %>
+    </div>
+
+  </div>
+</div>
+
+<hr class="pub" width="100%" color="black">
+<center><p style="font-size: 8px;"> lien commercial</p></center>
+<div class="containerpub">
+
+  <div class="publicite bottom">
+    <%= link_to "https://www.booxup.com/" do %>
+      <%= image_tag "booxup.png" %>
+    <% end %>
+  </div>
 </div>
