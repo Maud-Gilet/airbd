@@ -32,3 +32,40 @@
 .album-rental-status {
   font-size: 1.4em;
 }
+#btn-add-album{
+  display:flex;
+  color: #020A57;
+  align-items: center;
+  margin-top: 20px;
+  i {
+    padding-right: 5px;
+    color: $green;
+  }
+  a {
+    text-decoration: none;
+    color:black;
+    font-size: 16px;
+  }
+  p {
+    margin: 0px;
+  }
+}
+#user-infos-edit {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  display:flex;
+  color: #020A57;
+  align-items: center;
+  margin-top: 20px;
+  i {
+    padding-right: 5px;
+    color: $green;
+    position: relative;
+    bottom: 73px;
+    left: 240px;
+  }
+  p {
+    margin: 0px;
+  }
+}
