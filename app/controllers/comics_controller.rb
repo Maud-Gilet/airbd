@@ -20,7 +20,7 @@ class ComicsController < ApplicationController
       flash[:alert] = "Veuillez renouveller votre recherche, nous n'avons trouvé aucune correspondance"
       render :new
     elsif @comic.save
-      redirect_to new_album_path(comic_id: @comic.id.to_s), notice: "#{@comic.title} est disponible"
+      redirect_to new_album_path(comic_id: @comic.id.to_s), notice: "#{@comic.title} est maintenant disponible"
     else
       render :new
     end
@@ -33,8 +33,8 @@ class ComicsController < ApplicationController
   end
 
   def check_doubles(title_query, isbn_query)
-    # Check if the result of the search raises matches in our DB
-    sql_query = " title ILIKE :title_query OR isbn = :isbn_query "
+    # Check if the result of the search for 'API add' raises matches in our DB
+    sql_query = " title @@ :title_query OR isbn = :isbn_query "
     @comics = Comic.where(sql_query, title_query: title_query.to_s, isbn_query: isbn_query.to_s)
     return @comics.first unless @comics.empty?
   end
