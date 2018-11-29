@@ -17,19 +17,36 @@
   <div class='dashboard-item' id='user-message-container'>
     <h5>Ma messagerie</h5>
     <div class='container user-message-display'>
-      <% @user.albums.each do |album| %>
-        <% if album.requests.length != 0 %>
-          <% album.requests.each do |request| %>
-            <% if request.status == true %>
-              <p> <%= request.user.first_name %></p>
-              <p> <%= request.created_at %></p>
-              <p><%= link_to 'Accepter', album_path(request.album), class: 'btn btn-success' %></p>
-              <p><%=link_to 'Refuser', album_path(request.album), class: 'btn btn-danger' %></p>
+      <% if @user.albums.length != 0 %>
+        <% @user.albums.each do |album| %>
+          <% if album.requests.length != 0 %>
+            <% album.requests.each do |request| %>
+              <% if request.status == true %>
+                <table>
+                  <tr>
+                    <td><strong>De </strong></td>
+                     <td><%= request.user.first_name %></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Reçu le </strong></td>
+                    <td><%= request.created_at %></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Titre</strong></td>
+                    <td><%= request.album.comic.title %></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Action</strong></td>
+                    <td><i class="fas fa-check-circle" style="color: $green"> <i class="fas fa-times-circle" style="color: $red"></i></i>
+                    </td>
+                  </tr>
+                <% end %>
+              </table>
             <% end %>
           <% end %>
-        <% else %>
-          <p>Aucun nouveau message</p>
         <% end %>
+      <% else %>
+        <p>Aucun nouveau message</p>
       <% end %>
     </div>
   </div>
@@ -99,7 +116,7 @@
                 <p> Propriétaire: <%= "#{request.album.user.first_name} #{request.album.user.last_name}" %></p>
               </div>
               <div id='cancel-request-btn' class="btn btn-danger">
-                <%= link_to 'Annuler', album_request_path(request.album, request), method: 'PATCH' %>
+                <%= link_to 'Annuler', album_request_path(request.album, request), method: 'PATCH', data: { confirm: "Are you sure?" } %>
               </div>
               <div class= "user-album-card-link">
                 <p><%= link_to 'Détails', album_path(request.album) %></p>
