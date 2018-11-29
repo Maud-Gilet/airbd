@@ -25,7 +25,8 @@ const addMarkersToMap = (map, markers) => {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10'
+      style: 'mapbox://styles/jejelele12/cjp2o472o04492rms0by946h5'
+      // mapbox://styles/jejelele12/cjp2o472o04492rms0by946h5    https://api.mapbox.com/styles/v1/jejelele12/cjp2olz5t05t12sme8hijbira.html?fresh=true&title=true&access_token=pk.eyJ1IjoiamVqZWxlbGUxMiIsImEiOiJjam9pZmM1NXcwMDJuM2xsaWwzaGN4d3k0In0.5FmRswuIw1MhXGyBWFZvxQ#11.0/39.290000/-76.500000/0
 
     });
 
