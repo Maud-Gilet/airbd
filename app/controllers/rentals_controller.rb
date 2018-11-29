@@ -14,6 +14,7 @@ class RentalsController < ApplicationController
       redirect_to album_rental_path(@album, @rental)
     else
       render :new
+    end
   end
 
   def show
