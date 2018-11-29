@@ -27,18 +27,18 @@ new_users = [
     email: 'maud.gilet@gmail.com',
     password: 'admin$rocket',
     admin: true },
-  { first_name: 'Léger',
-    last_name: 'Jérôme',
+  { first_name: 'Jérôme',
+    last_name: 'Léger',
     address: '42 rue des Vinaigriers 75010 Paris',
     email: 'jejelele12@gmail.com',
     password: 'admin$rocket',
     admin: false },
-  { first_name: 'Ribot',
-    last_name: 'Mathieu',
+  { first_name: 'Mathieu',
+    last_name: 'Ribot',
     address: '96 rue des Moines 75017 Paris',
     email: 'mribot@hotmail.fr',
     password: 'admin$rocket',
-    admin: false },
+    admin: false }
 ]
 
 new_users.each do |user|
