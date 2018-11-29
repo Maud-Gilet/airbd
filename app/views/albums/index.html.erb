@@ -1,7 +1,7 @@
 <div class="main-container">
 
   <div class="container albums-index-container">
-    <h3>Découvrez les BD <br>autour de chez vous</h3>
+    <h3 class="fancy"><%= @albums.count %> BD près de vous</h3>
     <div class='row'>
       <% albums_sorted = @albums.sort_by { |album| album.comic.title.downcase } %>
       <% albums_sorted.each do |album| %>
@@ -40,7 +40,7 @@
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#demandeEmpruntModal">Contacter le propriétaire </button>
                     <div class="modal fade" id="demandeEmpruntModal" tabindex="-1" role="dialog" aria-labelledby="demandeEmpruntModalLabel" aria-hidden="true">
                     <%= render 'modal', album: album %>
-                    </div>
+                    </div>         
                   </div>
                   <%= link_to 'Info', album_path(album) %>
                 </div>
@@ -52,8 +52,7 @@
     </div>
   </div>
 
-  <div id="map" style="width: 140%;
-  height: calc(100vh - 70px);"
+  <div id="map"
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
