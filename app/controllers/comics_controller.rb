@@ -33,9 +33,12 @@ class ComicsController < ApplicationController
   end
 
   def check_doubles(title_query, isbn_query)
-    # Check if the result of the search for 'API add' raises matches in our DB
-    sql_query = " title @@ :title_query OR isbn = :isbn_query "
-    @comics = Comic.where(sql_query, title_query: title_query.to_s, isbn_query: isbn_query.to_s)
+    # Check if the result of the search for 'API add' raises matches in our DB (first with ISBN, then with a PG search on title)
+    sql_query = " isbn = :isbn_query "
+    @comics = Comic.where(sql_query, isbn_query: isbn_query)
+
+    Comic.search_by_title(title_query).each { |comic| @comics << comic } unless Comic.search_by_title(title_query).empty?
+
     return @comics.first unless @comics.empty?
   end
 
