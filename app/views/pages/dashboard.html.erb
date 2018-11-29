@@ -2,15 +2,19 @@
 <div class='dashboard-container'>
 
   <div class='dashboard-item' id='user-infos-container'>
-    <h5>Mes informations</h5>
+    <div class="user-infos-header-inline">
+      <div>
+        <h5>Mes informations</h5>
+      </div>
+      <div class="edit-user-button">
+        <%= link_to edit_user_registration_path do %>
+        <button type="button" class="btn-dashboard"><span>Modifier</span></button>
+        <% end %>
+      </div>
+    </div>
     <div id='user-infos-display'>
       <p><%= @user.first_name %> <%= @user.last_name %></p>
       <p><%= @user.address %></p>
-    </div>
-    <div id='user-infos-edit'>
-      <%= link_to edit_user_registration_path do %>
-      <button type="button" class="btn-dashboard"><span>Modifier</span></button>
-      <% end %>
     </div>
   </div>
 
@@ -80,12 +84,9 @@
         <p>Vous n'avez encore aucune BD</p>
       <% end %>
     </div>
-    <div id='btn-add-album'>
-      <%= link_to new_album_path do %>
-        <button type="button" class="btn-dashboard"><span>Ajouter un album</span></button>
-      <% end %>
-      <p><%= link_to 'Ajouter un album', new_album_path %></p>
-    </div>
+    <%= link_to new_album_path do %>
+      <button type="button" class="btn-dashboard"><span>Ajouter un album</span></button>
+    <% end %>
   </div>
 
   <div class='dashboard-item' id='user-rentals-container'=>
