@@ -68,7 +68,6 @@
     font-size: 0.7em;
   }
 }
-
 .index-album-card-footer {
   height: 32px;
   margin-right: 1px;
@@ -76,4 +75,75 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+
+.user-album-card {
+  height: 150px;
+  width: 110px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  background-position: center;
+  position: relative;
+  margin: 10px 10px;
+}
+.user-album-card-description {
+  position: absolute;
+  text-align: center;
+  margin-right: 3px;
+  margin-left: 3px;
+  color: white;
+}
+.card-hover {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(-225deg, #061f56 30%, #031335 80%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.user-album-card:hover .card-hover {
+  opacity: 0.9;
+}
+
+.user-album-card-description {
+  & h5 {
+    font-size: 0.7em;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 15px;
+  }
+  & h2 {
+    font-size: 24px;
+  }
+  & p {
+    font-size: 14px;
+    opacity: 0.7;
+    color: black;
+    text-shadow: none;
+  }
+}
+
+.border-available {
+  border-left: 7px solid #23BE96;
+}
+
+.border-unavailable {
+  border-left: 7px solid #E30017;
+}
+
+.user-album-card-link a {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index: 2;
+  background: black;
+  opacity: 0;
+}
+.user-album-card-link:hover{
+  opacity: 0.1;
 }
