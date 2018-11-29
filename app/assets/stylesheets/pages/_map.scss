@@ -1,0 +1,56 @@
+.main-container {
+  display: flex;
+}
+.col{
+  margin: 5px;
+}
+.albums-index-container{
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  text-align: center;
+}
+
+.index-album-card{
+  height: 230px;
+  width: 180px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  background-position: center;
+  color: white;
+  position: relative;
+  margin:20px 0px;
+  > a{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    z-index: 2;
+    background: black;
+    opacity: 0;
+  }
+}
+.index-album-card-description{
+  // opacity: 0;
+  text-align: justify;
+  font-size: 15px;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  p{
+    margin-bottom: 1px;
+  }
+}
+.album-rental-status{
+  position: absolute;
+  bottom: 2px;
+  right: 4px;
+}
+.index-contact-btn{
+  position: absolute;
+  bottom: -32px;
+}
+.btn{
+  font-size: 13px;
+  width: 180px;
+}

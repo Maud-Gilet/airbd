@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  has_many :albums
+  has_many :albums, dependent: :destroy
   has_many :rentals, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
@@ -12,4 +12,7 @@ class User < ApplicationRecord
   validates :address, presence: true
   validates :email, presence: true
   validates :password, presence: true
+
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 end

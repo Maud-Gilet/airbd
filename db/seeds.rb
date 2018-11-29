@@ -5,6 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts 'Deleting all Users'
+
+User.delete_all
+
+puts 'Delete users'
+User.destroy_all
 
 puts 'Creating 5 Users'
 
@@ -17,7 +23,7 @@ new_users = [
     admin: true },
   { first_name: 'Maud',
     last_name: 'Gilet',
-    address: '16 rue de Sèvres 75007 Paris',
+    address: '16 rue du Sentier 75002 Paris',
     email: 'maud.gilet@gmail.com',
     password: 'admin$rocket',
     admin: true },
@@ -26,23 +32,17 @@ new_users = [
     address: '42 rue des Vinaigriers 75010 Paris',
     email: 'jejelele12@gmail.com',
     password: 'admin$rocket',
-    admin: true },
+    admin: false },
   { first_name: 'Mathieu',
     last_name: 'Ribot',
     address: '96 rue des Moines 75017 Paris',
     email: 'mribot@hotmail.fr',
     password: 'admin$rocket',
-    admin: true },
-  { first_name: 'Robert',
-    last_name: 'Jean',
-    address: '23 Place Bellecour, 69002 Lyon',
-    email: 'jrobert@yahoo.fr',
-    password: 'randuser$rocket',
     admin: false }
 ]
 
 new_users.each do |user|
-  User.create(
+  User.create!(
     first_name: user[:first_name],
     last_name: user[:last_name],
     address: user[:address],
@@ -54,83 +54,87 @@ end
 
 puts 'Seeding of Users .... Finished ..............!'
 
+puts 'Deleting all Comics'
+
+Comic.delete_all
+
 puts 'Creating 15 Comics ...............'
 
 new_comics = [
   { title: 'Tintin - On a marché sur la lune',
     author: 'Hergé',
-    isbn: '',
-    artwork: '',
+    isbn: '2203006498',
+    artwork: 'http://books.google.com/books/content?id=SkPAIAAACAAJ&printsec=frontcover&img=1&zoom=5',
     category: '' },
   { title: 'Tintin - Objectif Lune',
     author: 'Hergé',
-    isbn: '',
-    artwork: '',
+    isbn: '220300648X',
+    artwork: 'http://books.google.com/books/content?id=fqP9HwAACAAJ&printsec=frontcover&img=1&zoom=5',
     category: '' },
   { title: 'Tintin - Tintin au Tibet',
     author: 'Hergé',
-    isbn: '',
-    artwork: '',
+    isbn: '9782203001190',
+    artwork: 'http://books.google.com/books/content?id=a64_DwAAQBAJ&printsec=frontcover&img=1&zoom=5',
     category: '' },
   { title: 'Tintin - Vol 747 pour Sidney',
     author: 'Hergé',
-    isbn: '',
-    artwork: '',
+    isbn: '2203001216',
+    artwork: 'http://books.google.com/books/content?id=ca4_DwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl',
     category: '' },
   { title: 'Tintin - Le Lotus Bleu',
     author: 'Hergé',
     isbn: '',
-    artwork: '',
+    artwork: 'http://books.google.com/books/content?id=J1QrAQAAIAAJ&printsec=frontcover&img=1&zoom=1',
     category: '' },
   { title: 'Les Tuniques Bleues - Tome 62 - Sallie',
     author: 'Cauvin et Lambil',
-    isbn: '',
-    artwork: '',
+    isbn: '9791034738571',
+    artwork: 'http://books.google.com/books/content?id=Flp0DwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl',
     category: '' },
   { title: "Boule & Bill - Tome 3 - Les Copains d'Abord",
     author: 'Bastide et Roba',
-    isbn: '',
-    artwork: '',
+    isbn: '2800189207',
+    artwork: 'http://books.google.com/books/content?id=XFulDgAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl',
     category: '' },
   { title: 'Boule & Bill - Tome 14 - Une vie de chien',
     author: 'Bastide et Roba',
-    isbn: '',
-    artwork: '',
+    isbn: '2800189312',
+    artwork: 'http://books.google.com/books/content?id=inz9AwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl',
     category: '' },
   { title: 'Boule & Bill - Tome 10 - Bill, chien modèle',
     author: 'Bastide et Roba',
-    isbn: '',
-    artwork: '',
+    isbn: '280018924X',
+    artwork: 'http://books.google.com/books/content?id=SEILDgAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl',
     category: '' },
   { title: 'Kid Paddle - Tome 1 - Jeux de vilains',
     author: 'Midam',
-    isbn: '',
+    isbn: '280013187X',
     artwork: '',
     category: '' },
   { title: 'Blake & Mortimer - Tome 24 - Le Testament de William S.',
     author: 'Sente & Juillard',
-    isbn: '',
-    artwork: '',
+    isbn: '2505054606',
+    artwork: 'http://books.google.com/books/content?id=ppinDAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl',
     category: '' },
   { title: 'Thorgal - Tome 34 : Kah-Aniel',
     author: 'Sente &  Rosinski',
-    isbn: '',
-    artwork: '',
+    isbn: '2803642468',
+    artwork: 'http://books.google.com/books/content?id=YWrPAQAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl',
     category: '' },
   { title: 'Blake & Mortimer - Tome 21 : Le serment des cinq lords',
     author: 'Sente & Juillard',
-    isbn: '',
-    artwork: '',
+    isbn: '2505023255',
+    artwork: 'http://books.google.com/books/content?id=sdxj31_YPTAC&printsec=frontcover&img=1&zoom=5&edge=curl',
     category: '' },
   { title: 'Le Donjon de Naheulbeuk - Tome 23',
     author: 'Lang & Poinsot',
-    isbn: '',
+    isbn: '2353258069',
     artwork: '',
     category: '' },
   { title: 'Ces jours qui disparaissent',
     author: 'Le Boucher',
-    isbn: '',
-    artwork: '',
+    isbn: '2331031487',
+    artwork: 'http://books.google.com/books/content?id=TCYpDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl',
     category: '' }
 ]
 
@@ -145,6 +149,10 @@ new_comics.each do |comic|
 end
 
 puts 'Seeding of Comics .... Finished ..............!'
+
+# puts 'Deleting all Albums'
+
+# Album.delete_all
 
 # puts 'Creating 15 Albums ...............'
 
@@ -221,6 +229,10 @@ puts 'Seeding of Comics .... Finished ..............!'
 # end
 
 # puts 'Seeding of Albums .... Finished ..............!'
+
+# puts 'Deleting all Rentals'
+
+# Rental.delete_all
 
 # puts 'Creating 5 Rentals ...............'
 

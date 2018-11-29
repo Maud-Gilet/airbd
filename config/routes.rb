@@ -12,6 +12,6 @@ Rails.application.routes.draw do
     resources :rentals, only: [:create, :show]
   end
 
-  resources :comics, only: [:create]
+  resources :comics, only: [:new, :create]
 
 end
