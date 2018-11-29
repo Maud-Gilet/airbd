@@ -10,15 +10,25 @@
 
 .btn-contact-proprio {
   width: 130px;
-  padding: 1px 15px;
+  color: #1D0056;
+  background-color: inherit;
+  border-radius: 2px;
+  text-decoration: none;
+  border: 1px solid #1D0056;
+  padding: 4px 15px;
+  border-radius: 5px;
+  opacity: 0.8;
+}
+
+.btn-contact-proprio:hover {
+  opacity: 1;
 }
 
 .btn-contact-proprio span {
   font-size: 0.8em;
-
+  font-weight: lighter;
 }
 
 .album-rental-status {
-  margin-left: 8px;
   font-size: 1.4em;
 }

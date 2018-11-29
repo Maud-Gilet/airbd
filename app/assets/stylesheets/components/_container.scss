@@ -1,0 +1,16 @@
+.main-container {
+  display: flex;
+}
+.col{
+  margin: 5px;
+}
+.albums-index-container{
+  margin-top: 15px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  text-align: center;
+  & h3 {
+    padding-bottom: 15px;
+  }
+}
+
