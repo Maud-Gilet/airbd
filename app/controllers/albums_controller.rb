@@ -26,19 +26,21 @@ class AlbumsController < ApplicationController
   def create
     @album = Album.new(album_params)
     @album.user = current_user
+    authorize @album
 
     if @album.save
       redirect_to current_user_dashboard_path, notice: 'Votre album a bien été créé.'
     else
       render :new
     end
-    authorize @album
   end
 
   def edit
+    authorize @album
   end
 
   def update
+    authorize @album
     @album.update(album_params)
     if @album.update(album_params)
       redirect_to current_user_dashboard_path, notice: 'Votre album a bien été mis à jour.'
