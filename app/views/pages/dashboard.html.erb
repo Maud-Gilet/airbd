@@ -77,9 +77,29 @@
   <div class='dashboard-item' id='user-pending-container'>
     <h4>Mes demandes en attente</h4>
     <div class='container user-pending-display'>
-      <div class="row">
+      <% if @user.requests.length != 0 %>
+        <% @user.requests.each do |request| %>
+          <% if request.status == true %>
+            <div class="col-xs-12 col-sm-4">
+              <div class="user-album-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('test-cover.png');">
+                <div class="user-album-card-description">
+                  <p> <%= request.album.comic.title %> </p>
+                  <p> Propriétaire: <%= "#{request.album.user.first_name} #{request.album.user.last_name}" %></p>
+                </div>
+                <div id='cancel-request-btn' class="btn btn-danger">
+                  <%= link_to 'Annuler', album_request_path(request.album, request), method: 'PATCH' %>
+                </div>
+                </div>
+                <div class= "user-album-card-link">
+                  <p><%= link_to 'Détails', album_path(request.album) %></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      <% else %>
         <p>Aucune demande en attente</p>
-      </div>
+      <% end %>
     </div>
   </div>
 

@@ -1,7 +1,13 @@
 // .cards-container {
 //   display: flex;
 // }
-
-
-.cards {
+#cancel-request-btn{
+  position: absolute;
+  bottom: -32px;
+  button {
+    width: 110px;
+  }
+}
+.user-pending-display .user-album-card{
+  position:relative;
 }
