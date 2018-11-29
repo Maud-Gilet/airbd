@@ -1,11 +1,24 @@
 .modal {
   color: black;
   text-shadow: none;
-  .btn {
+}
+.form-control::-webkit-input-placeholder {
+  color: black;
+}
+.form-control::-webkit-input-placeholder:focus {
+  color:red;
+}
+#message-text {
+  height: 120px;
+}
+.modal-footer {
+  .cancel-button{
+    background: $red;
+    color: white;
+    font-weight: bolder;
+  }
+  .send-button {
+    background: $green;
+    font-weight: bolder;
   }
 }
-// #demandeEmpruntModal > div > div > div.modal-footer > div:nth-child(2) > a {
-//   position:relative;
-//   opacity:1;
-//   width: auto;
-// }

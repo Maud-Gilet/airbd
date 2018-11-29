@@ -1,22 +1,24 @@
-<% @placeholder = "Bonjour #{album.user.first_name}, je voudrais emprunter votre album #{album.comic.title}. Merci de votre réponse !" %>
+<% @placeholder = "Bonjour #{album.user.first_name},\nJe voudrais emprunter votre album #{album.comic.title}.\nMerci de votre réponse !" %>
 
 <div class="modal-dialog" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <h4 class="modal-title" id="demandeEmpruntModalLabel">Envoyer une demande à <%= album.user.first_name %> <br>
-        pour <%= album.comic.title %></h4>
+      <h4 class="modal-title" id="demandeEmpruntModalLabel">Envoyer une demande à <strong><%= album.user.first_name %></strong><br>
+        pour <strong><%= album.comic.title %></strong></h4>
     </div>
     <div class="modal-body">
       <form>
         <div class="form-group">
           <label for="message-text" class="col-form-label">Message :</label>
-          <textarea class="form-control" id="message-text" placeholder="<% @placeholder %>"></textarea>
+          <textarea class="form-control" id="message-text" placeholder="<%= @placeholder %>"></textarea>
         </div>
       </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-      <%= link_to 'Envoyer', current_user_dashboard_path(message: 'blabla'), class: 'btn btn-primary' %>
+      <button type="button" class="btn btn-secondary cancel-button" data-dismiss="modal">Annuler</button>
+      <%= link_to 'Envoyer', album_requests_path(album), method: 'POST', class: 'btn btn-primary send-button' %>
     </div>
   </div>
 </div>
+
+<!-- current_user_dashboard_path(message: 'blabla'), -->
