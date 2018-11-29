@@ -1,7 +1,7 @@
 <div class="main-container">
 
   <div class="container albums-index-container">
-    <h2 id="fancy"><%= @albums.count%> BD près de chez vous</h2>
+    <h3 class="fancy"><%= @albums.count %> BD près de vous</h3>
     <div class='row'>
       <% albums_sorted = @albums.sort_by { |album| album.comic.title.downcase } %>
       <% albums_sorted.each do |album| %>
