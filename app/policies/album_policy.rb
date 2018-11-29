@@ -1,8 +1,13 @@
 class AlbumPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
+      # Define what the user will see according to his 'status'
       scope.all
     end
+  end
+
+  def index?
+    true
   end
 
   def new?
