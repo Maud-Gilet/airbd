@@ -37,22 +37,20 @@
   <div class='dashboard-item' id='user-library-container'>
     <h4>Ma bibliothèque</h4>
     <div class='container user-library-display'>
-      <div class="row">
-        <% if @user.albums.length != 0 %>
-          <% @user.albums.each do |album| %>
-            <div class="user-album-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('test-cover.png');">
-              <div class="user-album-card-description">
-                <p> <%= album.comic.title %> </p>
-              </div>
-              <div class= "user-album-card-link">
-                <p><%= link_to 'Modifier', edit_album_path(album) %></p>
-              </div>
+      <% if @user.albums.length != 0 %>
+        <% @user.albums.each do |album| %>
+          <div class="user-album-card" style="background-image: url(<%= album.comic.artwork %>);">
+            <div class="user-album-card-description">
+              <p> <%= album.comic.title %> </p>
             </div>
-          <% end %>
-        <% else %>
-          <p>Vous n'avez encore aucune BD</p>
+            <div class= "user-album-card-link">
+              <p><%= link_to 'Modifier', edit_album_path(album) %></p>
+            </div>
+          </div>
         <% end %>
-      </div>
+      <% else %>
+        <p>Vous n'avez encore aucune BD</p>
+      <% end %>
     </div>
     <div id='btn-add-album'>
       <%= link_to new_album_path do %>
@@ -66,7 +64,7 @@
     <div class='container user-rentals-display'>
       <% if @user.rentals.length != 0 %>
         <% @user.rentals.each do |rental| %>
-          <div class="user-album-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('test-cover.png');">
+          <div class="user-album-card" style="background-image: url(<%= rental.album.comic.artwork %>);">
             <div class="user-album-card-description">
               <p> <%= rental.album.comic.title %> </p>
               <p> Propriétaire: <%= "#{rental.album.user.first_name} #{rental.album.user.last_name}" %></p>
@@ -89,7 +87,7 @@
       <% if @user.requests.length != 0 %>
         <% @user.requests.each do |request| %>
           <% if request.status == true %>
-            <div class="user-album-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('test-cover.png');">
+            <div class="user-album-card" style="background-image: url(<%= request.album.comic.artwork %>);">>
               <div class="user-album-card-description">
                 <p> <%= request.album.comic.title %> </p>
                 <p> Propriétaire: <%= "#{request.album.user.first_name} #{request.album.user.last_name}" %></p>
