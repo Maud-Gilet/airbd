@@ -9,7 +9,7 @@
     </div>
     <div id='user-infos-edit'>
       <%= link_to edit_user_registration_path do %>
-      <i class="fas fa-user-edit">Modifier</i>
+        <i class="fas fa-user-edit"></i>
       <% end %>
     </div>
   </div>
@@ -29,7 +29,7 @@
                   </tr>
                   <tr>
                     <td><strong>Reçu le </strong></td>
-                    <td><%= request.created_at %></td>
+                    <td><%= request.created_at.strftime("%d\/%m\/%Y") %></td>
                   </tr>
                   <tr>
                     <td><strong>Titre</strong></td>
@@ -37,7 +37,12 @@
                   </tr>
                   <tr>
                     <td><strong>Action</strong></td>
-                    <td><i class="fas fa-check-circle" style="color: $green"> <i class="fas fa-times-circle" style="color: $red"></i></i>
+                    <td> <%= link_to edit_user_registration_path do %>
+                      <i class="fas fa-check-circle"></i>
+                      <% end %>
+                      <%= link_to edit_user_registration_path do %>
+                      <i class="fas fa-times-circle"></i>
+                      <% end %>
                     </td>
                   </tr>
                 <% end %>
@@ -77,8 +82,9 @@
     </div>
     <div id='btn-add-album'>
       <%= link_to new_album_path do %>
-        <i class="fas fa-plus-circle">Ajouter un album</i>
+        <i class="fas fa-plus-circle"></i>
       <% end %>
+      <p><%= link_to 'Ajouter un album', new_album_path %></p>
     </div>
   </div>
 
