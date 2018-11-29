@@ -17,7 +17,20 @@
   <div class='dashboard-item' id='user-message-container'>
     <h5>Ma messagerie</h5>
     <div class='container user-message-display'>
-      <p>Aucun message pour le moment :)</p>
+      <% @user.albums.each do |album| %>
+        <% if album.requests.length != 0 %>
+          <% album.requests.each do |request| %>
+            <% if request.status == true %>
+              <p> <%= request.user.first_name %></p>
+              <p> <%= request.created_at %></p>
+              <p><%= link_to 'Accepter', album_path(request.album), class: 'btn btn-success' %></p>
+              <p><%=link_to 'Refuser', album_path(request.album), class: 'btn btn-danger' %></p>
+            <% end %>
+          <% end %>
+        <% else %>
+          <p>Aucun nouveau message</p>
+        <% end %>
+      <% end %>
     </div>
   </div>
 
@@ -27,14 +40,12 @@
       <div class="row">
         <% if @user.albums.length != 0 %>
           <% @user.albums.each do |album| %>
-            <div class="col-xs-12 col-sm-7 col-md-4 col-lg-3">
-              <div class="user-album-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('test-cover.png');">
-                <div class="user-album-card-description">
-                  <p> <%= album.comic.title %> </p>
-                </div>
-                <div class= "user-album-card-link">
-                  <p><%= link_to 'Modifier', edit_album_path(album) %></p>
-                </div>
+            <div class="user-album-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('test-cover.png');">
+              <div class="user-album-card-description">
+                <p> <%= album.comic.title %> </p>
+              </div>
+              <div class= "user-album-card-link">
+                <p><%= link_to 'Modifier', edit_album_path(album) %></p>
               </div>
             </div>
           <% end %>
@@ -55,16 +66,14 @@
     <div class='container user-rentals-display'>
       <% if @user.rentals.length != 0 %>
         <% @user.rentals.each do |rental| %>
-          <div class="col-xs-12 col-sm-4">
-            <div class="user-album-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('test-cover.png');">
-              <div class="user-album-card-description">
-                <p> <%= rental.album.comic.title %> </p>
-                <p> Propriétaire: <%= "#{rental.album.user.first_name} #{rental.album.user.last_name}" %></p>
-                <p> Depuis le <%= "#{rental.created_at.day}/#{rental.created_at.month}/#{rental.created_at.year}" %></p>
-              </div>
-              <div class= "user-album-card-link">
-                <p><%= link_to 'Détails', album_path(rental.album) %></p>
-              </div>
+          <div class="user-album-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('test-cover.png');">
+            <div class="user-album-card-description">
+              <p> <%= rental.album.comic.title %> </p>
+              <p> Propriétaire: <%= "#{rental.album.user.first_name} #{rental.album.user.last_name}" %></p>
+              <p> Depuis le <%= "#{rental.created_at.day}/#{rental.created_at.month}/#{rental.created_at.year}" %></p>
+            </div>
+            <div class= "user-album-card-link">
+              <p><%= link_to 'Détails', album_path(rental.album) %></p>
             </div>
           </div>
         <% end %>
@@ -80,19 +89,16 @@
       <% if @user.requests.length != 0 %>
         <% @user.requests.each do |request| %>
           <% if request.status == true %>
-            <div class="col-xs-12 col-sm-4">
-              <div class="user-album-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('test-cover.png');">
-                <div class="user-album-card-description">
-                  <p> <%= request.album.comic.title %> </p>
-                  <p> Propriétaire: <%= "#{request.album.user.first_name} #{request.album.user.last_name}" %></p>
-                </div>
-                <div id='cancel-request-btn' class="btn btn-danger">
-                  <%= link_to 'Annuler', album_request_path(request.album, request), method: 'PATCH' %>
-                </div>
-                </div>
-                <div class= "user-album-card-link">
-                  <p><%= link_to 'Détails', album_path(request.album) %></p>
-                </div>
+            <div class="user-album-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('test-cover.png');">
+              <div class="user-album-card-description">
+                <p> <%= request.album.comic.title %> </p>
+                <p> Propriétaire: <%= "#{request.album.user.first_name} #{request.album.user.last_name}" %></p>
+              </div>
+              <div id='cancel-request-btn' class="btn btn-danger">
+                <%= link_to 'Annuler', album_request_path(request.album, request), method: 'PATCH' %>
+              </div>
+              <div class= "user-album-card-link">
+                <p><%= link_to 'Détails', album_path(request.album) %></p>
               </div>
             </div>
           <% end %>

@@ -4,8 +4,11 @@
 #cancel-request-btn {
   position: absolute;
   bottom: -32px;
-  button {
-    width: 110px;
+  width: 110px;
+  a {
+    text-decoration: none;
+    text-shadow: none;
+    color: white;
   }
 }
 .user-pending-display .user-album-card{
