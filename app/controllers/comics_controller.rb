@@ -5,6 +5,7 @@ class ComicsController < ApplicationController
 
   def new
     @comic = Comic.new
+    authorize @comic
   end
 
   def create
@@ -13,6 +14,7 @@ class ComicsController < ApplicationController
 
     @comic = Comic.new(store_informations(title_query, isbn_query))
 
+    authorize @comic
     @comic_found = check_doubles(title_query, isbn_query)
     if !@comic_found.nil?
       redirect_to new_album_path(comic_id: @comic_found.id.to_s), notice: "Un correspondance a été trouvée dans la liste"
@@ -35,7 +37,8 @@ class ComicsController < ApplicationController
   def check_doubles(title_query, isbn_query)
     # Check if the result of the search for 'API add' raises matches in our DB (first with ISBN, then with a PG search on title)
     sql_query = " isbn = :isbn_query "
-    @comics = Comic.where(sql_query, isbn_query: isbn_query)
+    @comics = []
+    Comic.where(sql_query, isbn_query: isbn_query).each { |comic| @comics << comic }
 
     Comic.search_by_title(title_query).each { |comic| @comics << comic } unless Comic.search_by_title(title_query).empty?
 
