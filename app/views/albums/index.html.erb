@@ -2,7 +2,9 @@
 
   <div class="text-align-center">
     <h3 class="fancy"><%= @albums.where.not(user: current_user).count %> BD près de vous</h3>
+
     <div class="albums-index-container">
+
       <% albums_sorted = @albums.sort_by { |album| album.comic.title.downcase } %>
       <% albums_sorted.each do |album| %>
         <% if album.available == true %>

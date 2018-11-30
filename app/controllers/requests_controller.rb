@@ -7,9 +7,9 @@ class RequestsController < ApplicationController
     authorize @request
   end
 
-  def update
+  def destroy
     @request = Request.find(params[:id])
-    if @request.update(status: false)
+    if @request.destroy
       redirect_to current_user_dashboard_path, notice: 'Votre demande a bien été annulée.'
     end
     authorize @request
