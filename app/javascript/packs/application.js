@@ -17,5 +17,3 @@ if (document.querySelector('#comic_title') != null) {
 if (document.querySelector('#button-msg-box') != null) {
   toggleMsgBox();
 };
-toggleMsgBox();
-
