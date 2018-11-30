@@ -16,9 +16,9 @@ class ComicsController < ApplicationController
     @comic.artwork = 'https://i.pinimg.com/originals/54/06/4f/54064f0f4005ff3a5952f2a54e37ff2b.png' if @comic.artwork.nil?
 
     authorize @comic
-    @comic_found = check_doubles(title_query, isbn_query)
+    @comic_found = check_doubles(@comic.isbn)
     if !@comic_found.nil?
-      redirect_to new_album_path(comic_id: @comic_found.id.to_s), notice: "Un correspondance a été trouvée dans la liste"
+      redirect_to new_album_path(comic_id: @comic_found.id.to_s), alert: "Attention, un correspondance a été trouvée dans la liste"
     elsif store_informations(title_query, isbn_query).nil?
       flash[:alert] = "Veuillez renouveller votre recherche, nous n'avons trouvé aucune correspondance"
       render :new
@@ -35,13 +35,11 @@ class ComicsController < ApplicationController
     params.require(:comic).permit(:title, :author, :artwork, :category, :isbn)
   end
 
-  def check_doubles(title_query, isbn_query)
+  def check_doubles(isbn_query)
     # Check if the result of the search for 'API add' raises matches in our DB (first with ISBN, then with a PG search on title)
     sql_query = " isbn = :isbn_query "
     @comics = []
     Comic.where(sql_query, isbn_query: isbn_query).each { |comic| @comics << comic }
-
-    Comic.search_by_title(title_query).each { |comic| @comics << comic } unless Comic.search_by_title(title_query).empty?
 
     return @comics.first unless @comics.empty?
   end
