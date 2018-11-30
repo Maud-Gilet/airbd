@@ -12,9 +12,7 @@
 
 
 <div class="video">
-  <video autoplay muted loop id="myVideo">
-    <source src="assets/comic.mp4" type="video/mp4">
-  </video>
+  <%= cl_video_tag("comic", width: 600, loop: true, autoplay: true) %>
 </div>
 
 
@@ -41,3 +39,6 @@
 
 
 
+  <!-- <video autoplay muted loop id="myVideo">
+    <source src="assets/comic.mp4" type="video/mp4">
+  </video> -->
