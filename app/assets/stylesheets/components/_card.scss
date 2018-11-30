@@ -1,13 +1,3 @@
-#cancel-request-btn {
-  position: absolute;
-  bottom: -32px;
-  width: 110px;
-  a {
-    text-decoration: none;
-    text-shadow: none;
-    color: white;
-  }
-}
 .user-pending-display .user-album-card{
   position:relative;
 }
@@ -101,7 +91,7 @@
     font-size: 24px;
   }
   & p {
-    font-size: 14px;
+    font-size: 12px;
     opacity: 0.7;
     color: black;
     text-shadow: none;

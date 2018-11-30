@@ -97,7 +97,7 @@
           <div class="user-album-card" style="background-image: url(<%= rental.album.comic.artwork %>);">
             <div class="card-hover">
               <div class="user-album-card-description">
-                <p style='color:white'> Depuis le <%= "#{rental.created_at.day}/#{rental.created_at.month}/#{rental.created_at.year}" %></p>
+                <strong><h5 style='color:white'> Depuis le <%= "#{rental.created_at.day}/#{rental.created_at.month}/#{rental.created_at.year}" %></h5></strong>
                 <p style='color:white'> Propriétaire : <%= "#{rental.album.user.first_name} #{rental.album.user.last_name}" %></p>
               </div>
               <div class= "user-album-card-link">
