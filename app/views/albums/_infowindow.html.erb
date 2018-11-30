@@ -1,4 +1,7 @@
 <div class="infowindow">
-<p><%= album.user.first_name %></p>
-<p><%= album.comic.title%></p>
+<p><b><%= album.user.first_name%></b> </p>
+    <% @user=album.user%>
+    <% @user.albums[0,3].each do |album| %>
+    <p><%= album.comic.title%></p>
+    <%end%>
 </div>
