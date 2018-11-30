@@ -4,25 +4,26 @@
   color: #FFFFFF;
 }
 
-.btn-contact-proprio {
+.btn-detail-album-index {
   width: 120px;
-  color: #1D0056;
+  color: white;
   background-color: inherit;
   border-radius: 2px;
   text-decoration: none;
-  border: 1px solid #1D0056;
+  border: 1px solid white;
   padding: 2px 5px;
   border-radius: 5px;
   opacity: 1;
+  margin-top: 5px;
 }
 
-.btn-contact-proprio:hover {
+.btn-detail-album-index:hover {
   color: white;
-  background-color: #1D0056;
+  background-color: #inherit;
 }
 
-.btn-contact-proprio span {
-  font-size: 0.9em;
+.btn-detail-album-index span {
+  font-size: 0.8em;
   font-weight: normal;
 }
 

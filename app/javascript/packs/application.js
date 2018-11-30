@@ -8,6 +8,7 @@ import { autocompleteApiGoogleBooks } from '../components/init_autocomplete_api'
 
 initMapbox();
 
-autocompleteApiGoogleBooks();
-
+if (document.querySelector('#comic_title') != null) {
+  autocompleteApiGoogleBooks();
+}
 
