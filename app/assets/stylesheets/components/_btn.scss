@@ -13,11 +13,12 @@
   border: 1px solid #1D0056;
   padding: 4px 15px;
   border-radius: 5px;
-  opacity: 0.8;
+  opacity: 1;
 }
 
 .btn-contact-proprio:hover {
-  opacity: 1;
+  color: white;
+  background-color: #1D0056;
 }
 
 .btn-contact-proprio span {
@@ -35,11 +36,12 @@
   padding: 4px 15px;
   border-radius: 5px;
   margin-top: 15px;
-  opacity: 0.8;
+  opacity: 1;
 }
 
 .btn-dashboard:hover {
-  opacity: 1;
+  color: white;
+  background-color: #1D0056;
 }
 
 .btn-dashboard span {
@@ -52,24 +54,7 @@
   font-size: 1.4em;
   color: #23BE96;
 }
-#btn-add-album{
-  display:flex;
-  color: #020A57;
-  align-items: center;
-  margin-top: 20px;
-  i {
-    padding-right: 5px;
-    color: $green;
-  }
-  a {
-    text-decoration: none;
-    color:black;
-    font-size: 16px;
-  }
-  p {
-    margin: 0px;
-  }
-}
+
 #user-infos-edit {
   position: absolute;
   bottom: 15px;
@@ -89,3 +74,64 @@
     margin: 0px;
   }
 }
+
+.btn-form-new-reference {
+  width: 210px;
+  color: white;
+  background-color: #1D0056;
+  border-radius: 2px;
+  text-decoration: none;
+  text-align: center;
+  border: 1px solid #1D0056;
+  border-radius: 5px;
+  margin-bottom: 25px;
+  opacity: 0.8;
+}
+
+.btn-form-new-reference:hover {
+  opacity: 1;
+  color: white;
+}
+
+.form-actions {
+  text-align: center;
+  margin: auto;
+}
+
+.btn-form-create {
+  width: 210px;
+  color: #1D0056;
+  background-color: inherit;
+  border-radius: 2px;
+  text-decoration: none;
+  text-align: center;
+  border: 1px solid #1D0056;
+  border-radius: 5px;
+  margin-top: 10px;
+  opacity: 1;
+}
+
+.btn-form-create:hover {
+  color: white;
+  background-color: #1D0056;
+}
+
+// .btn-back {
+//   width: 110px;
+//   background-color: inherit;
+//   border-radius: 2px;
+//   text-decoration: none;
+//   text-align: center;
+//   border: 1px solid #1D0056;
+//   border-radius: 5px;
+//   margin-top: 50px;
+//   opacity: 0.9;
+//   & i {
+//     font-size: 0.9em;
+//     color: #1D0056;
+//     text-decoration: none;
+//   }
+// }
+// .btn-back:hover {
+//   opacity: 1;
+// }

@@ -2,9 +2,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :comic, :collection => Comic.all.order(:title), label: 'Référence BD' %>
 
-    <%= render 'add-comic' %>
     <%= f.input :description,
                 required: true,
                 autofocus: true,
@@ -14,6 +12,6 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Créer l'album", class: 'btn-form-create' %>
+    <%= f.button :submit, "Mettre à jour l'album", class: 'btn-form-create' %>
   </div>
 <% end %>

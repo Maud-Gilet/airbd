@@ -1,4 +1,8 @@
-<div class='container form-container'>
-  <h2>Mettre ses infos à jour</h2>
-  <%= render 'form', album: @album %>
+<div class='container form-container form-update'>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <h3>Mettre à jour les informations de <br> <%= @album.comic.title %></h3>
+      <%= render 'form-edit', album: @album %>
+    </div>
+  </div>
 </div>

@@ -1,3 +1,20 @@
+.form-new h3 {
+  padding-bottom: 15px;
+  text-align: center;
+}
+
+.form-update h3 {
+  padding-bottom: 15px;
+  text-align: center;
+}
+
+.form-flex-column-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 @media(min-width: 1400px) {
   .form-container {
     width: 1150px;
