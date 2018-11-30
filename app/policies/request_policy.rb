@@ -9,7 +9,7 @@ class RequestPolicy < ApplicationPolicy
     true
   end
 
-  def update?
+  def destroy?
     true
   end
 end

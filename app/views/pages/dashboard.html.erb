@@ -17,7 +17,6 @@
       <p><%= @user.address %></p>
     </div>
   </div>
-
   <div class='dashboard-item' id='user-message-container'>
     <h5>Ma messagerie</h5>
     <div class='container user-message-display'>
@@ -25,33 +24,31 @@
         <% @user.albums.each do |album| %>
           <% if album.requests.length != 0 %>
             <% album.requests.each do |request| %>
-              <% if request.status == true %>
-                <table>
-                  <tr>
-                    <td><strong>De </strong></td>
-                     <td><%= request.user.first_name %></td>
-                  </tr>
-                  <tr>
-                    <td><strong>Reçu le </strong></td>
-                    <td><%= request.created_at.strftime("%d\/%m\/%Y") %></td>
-                  </tr>
-                  <tr>
-                    <td><strong>Titre</strong></td>
-                    <td><%= request.album.comic.title %></td>
-                  </tr>
-                  <tr>
-                    <td><strong>Action</strong></td>
-                    <td> <%= link_to edit_user_registration_path do %>
+              <table>
+                <tr>
+                  <td><strong>De </strong></td>
+                   <td><%= request.user.first_name %></td>
+                </tr>
+                <tr>
+                  <td><strong>Reçu le </strong></td>
+                  <td><%= request.created_at.strftime("%d\/%m\/%Y") %></td>
+                </tr>
+                <tr>
+                  <td><strong>Titre</strong></td>
+                  <td><%= request.album.comic.title %></td>
+                </tr>
+                <tr>
+                  <td><strong>Action</strong></td>
+                  <td> <%= link_to album_rentals_path(request.album), method: 'POST' do %>
                       <i class="fas fa-check-circle"></i>
-                      <% end %>
-                      <%= link_to edit_user_registration_path do %>
+                    <% end %>
+                    <%= link_to album_request_path(request.album, request), method: 'DELETE' do %>
                       <i class="fas fa-times-circle"></i>
-                      <% end %>
-                    </td>
-                  </tr>
-                <% end %>
-              </table>
-            <% end %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </table>
           <% end %>
         <% end %>
       <% else %>
@@ -65,20 +62,23 @@
     <div class='container user-library-display'>
       <% if @user.albums.length != 0 %>
         <% @user.albums.each do |album| %>
-          <% if album.available == true %>
+          <% if album.rentals.length == 0 %>
             <div class="user-album-card border-available" style="background-image: url(<%= album.comic.artwork %>);">
           <% else %>
             <div class="user-album-card border-unavailable" style="background-image: url(<%= album.comic.artwork %>);">
           <% end %>
-            <div class="card-hover">
-              <div class="user-album-card-description">
-                <h5> <%= album.comic.title %> </h5>
-              </div>
-            </div>
-            <div class= "user-album-card-link">
-              <p><%= link_to 'Modifier', edit_album_path(album) %></p>
+          <div class="card-hover">
+            <div class="user-album-card-description">
+              <h5> <%= album.comic.title %> </h5>
             </div>
           </div>
+          <div class= "user-album-card-link">
+            <p><%= link_to 'Modifier', edit_album_path(album) %></p>
+          </div>
+          </div>
+          <div id='returned-btn' class="btn btn-dashboard">
+              <%= link_to 'Rendu !', album_rental_path(album, album.rentals.first), method: 'DELETE' %>
+            </div>
         <% end %>
       <% else %>
         <p>Vous n'avez encore aucune BD</p>
@@ -95,13 +95,14 @@
       <% if @user.rentals.length != 0 %>
         <% @user.rentals.each do |rental| %>
           <div class="user-album-card" style="background-image: url(<%= rental.album.comic.artwork %>);">
-            <div class="user-album-card-description">
-              <p> <%= rental.album.comic.title %> </p>
-              <p> Propriétaire: <%= "#{rental.album.user.first_name} #{rental.album.user.last_name}" %></p>
-              <p> Depuis le <%= "#{rental.created_at.day}/#{rental.created_at.month}/#{rental.created_at.year}" %></p>
-            </div>
-            <div class= "user-album-card-link">
-              <p><%= link_to 'Détails', album_path(rental.album) %></p>
+            <div class="card-hover">
+              <div class="user-album-card-description">
+                <p style='color:white'> Depuis le <%= "#{rental.created_at.day}/#{rental.created_at.month}/#{rental.created_at.year}" %></p>
+                <p style='color:white'> Propriétaire : <%= "#{rental.album.user.first_name} #{rental.album.user.last_name}" %></p>
+              </div>
+              <div class= "user-album-card-link">
+                <p><%= link_to 'Détails', album_path(rental.album) %></p>
+              </div>
             </div>
           </div>
         <% end %>
@@ -116,25 +117,21 @@
     <div class='container user-pending-display'>
       <% if @user.requests.length != 0 %>
         <% @user.requests.each do |request| %>
-          <% if request.status == true %>
-            <div class="user-album-card" style="background-image: url(<%= request.album.comic.artwork %>);">>
+          <div class="user-album-card" style="background-image: url(<%= request.album.comic.artwork %>);">
+            <div class="card-hover">
               <div class="user-album-card-description">
-                <p> <%= request.album.comic.title %> </p>
-                <p> Propriétaire: <%= "#{request.album.user.first_name} #{request.album.user.last_name}" %></p>
-              </div>
-              <div id='cancel-request-btn' class="btn btn-danger">
-                <%= link_to 'Annuler', album_request_path(request.album, request), method: 'PATCH', data: { confirm: "Are you sure?" } %>
-              </div>
-              <div class= "user-album-card-link">
-                <p><%= link_to 'Détails', album_path(request.album) %></p>
+                <h5> <%= request.album.comic.title %> </h5>
+                <p style='color:white'> Propriétaire : <%= "#{request.album.user.first_name} #{request.album.user.last_name}" %></p>
               </div>
             </div>
-          <% end %>
+            <div id='cancel-request-btn' class="btn btn-danger">
+              <%= link_to 'Annuler', album_request_path(request.album, request), method: 'DELETE', data: { confirm: "Are you sure?" }, notice: 'Votre demande a bien été annulée.' %>
+            </div>
+          </div>
         <% end %>
       <% else %>
         <p>Aucune demande en attente</p>
       <% end %>
     </div>
   </div>
-
 </div>

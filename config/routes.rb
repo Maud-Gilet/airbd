@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   # get 'users/:id', to: 'pages#profile'
 
   resources :albums do
-    resources :rentals, only: [:create, :show]
-    resources :requests, only: [:create, :update]
+    resources :rentals, only: [:create, :destroy]
+    resources :requests, only: [:create, :destroy]
   end
 
   resources :comics, only: [:new, :create]
