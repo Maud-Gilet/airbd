@@ -32,13 +32,13 @@ new_users = [
     address: '42 rue des Vinaigriers 75010 Paris',
     email: 'jejelele12@gmail.com',
     password: 'admin$rocket',
-    admin: false },
+    admin: true },
   { first_name: 'Mathieu',
     last_name: 'Ribot',
     address: '96 rue des Moines 75017 Paris',
     email: 'mribot@hotmail.fr',
     password: 'admin$rocket',
-    admin: false }
+    admin: true }
 ]
 
 new_users.each do |user|

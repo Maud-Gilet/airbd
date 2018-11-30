@@ -23,11 +23,11 @@ class ComicPolicy < ApplicationPolicy
   end
 
   def edit?
-    user_is_owner_or_admin?
+    true
   end
 
   def update?
-    user_is_owner_or_admin?
+    true
   end
 
   private
