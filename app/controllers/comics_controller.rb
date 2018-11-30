@@ -13,6 +13,7 @@ class ComicsController < ApplicationController
     isbn_query = comic_params[:isbn]
 
     @comic = Comic.new(store_informations(title_query, isbn_query))
+    @comic.artwork = 'https://i.pinimg.com/originals/54/06/4f/54064f0f4005ff3a5952f2a54e37ff2b.png' if @comic.artwork.nil?
 
     authorize @comic
     @comic_found = check_doubles(title_query, isbn_query)
