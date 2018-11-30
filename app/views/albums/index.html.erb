@@ -1,15 +1,11 @@
 <div class="main-container">
-
-<button type="button" class="btn-detail-album-index" data-toggle="modal" data-target="#informationsAlbumsModal"><span>Détails</span></button>
-
-                  <div class="modal fade" id="informationsAlbumsModal" tabindex="-1" role="dialog" aria-labelledby="informationsAlbumsModal" aria-hidden="true">
-                    <%= render 'show-modal', album: @albums.first %></div>
-
   <div class="text-align-center">
     <h3 class="fancy"><%= @albums.where.not(user: current_user).count %> BD près de vous</h3>
     <div class="albums-index-container">
       <% albums_sorted = @albums.sort_by { |album| album.comic.title.downcase } %>
       <% albums_sorted.each do |album| %>
+      <div class="modal fade" id="informationsAlbumsModal" tabindex="-1" role="dialog" aria-labelledby="informationsAlbumsModal" aria-hidden="true">
+      <%= render 'show-modal', album: album %></div>
         <% if album.available == true %>
           <% if album.user != current_user %>
             <div class="card-container">
@@ -23,9 +19,7 @@
                     <h5><%= album.comic.title %></h5>
                     <p>Localisation : <%= album.user.address %></p>
                   </div>
-
-
-
+                  <button type="button" class="btn-detail-album-index" data-toggle="modal" data-target="#informationsAlbumsModal"><span>Détails</span></button>
                 </div>
               </div>
             </div>
@@ -34,6 +28,7 @@
       <% end %>
     </div>
   </div>
+
 
   <div id="map"
     data-markers="<%= @markers.to_json %>"

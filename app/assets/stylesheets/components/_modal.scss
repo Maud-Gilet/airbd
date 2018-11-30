@@ -3,7 +3,7 @@
   text-shadow: none;
 }
 .modal-dialog {
-  margin: 80px auto;
+  margin: 20px auto;
 }
 .form-control::-webkit-input-placeholder {
   color: black;
@@ -31,4 +31,8 @@
     border: 1px solid $green;
     border-radius: 5px;
   }
+}
+
+#modal-msg-toggle {
+  display: none;
 }
