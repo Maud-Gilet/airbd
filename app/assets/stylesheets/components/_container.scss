@@ -1,3 +1,7 @@
+.fancy {
+  margin-bottom: 30px;
+}
+
 .main-container {
   display: flex;
 }
@@ -15,10 +19,10 @@
   margin-top: 15px;
   display:flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   text-align: center;
   width: 60vw;
-  margin-left: 40px;
+  margin-left: 20px;
 }
 
 .text-align-center {
