@@ -13,8 +13,9 @@ class RentalsController < ApplicationController
 
   def destroy
     @rental = Rental.find(params[:id])
-    @rental.destroy
-    redirect_to current_user_dashboard_path, notice: "La BD est de retour chez vous !"
+    if @rental.destroy
+      redirect_to current_user_dashboard_path, notice: "La BD est de retour chez vous !"
+    end
     authorize @rental
   end
 end

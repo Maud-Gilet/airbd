@@ -116,6 +116,45 @@
   background-color: #1D0056;
 }
 
+.btn-dashboard {
+  width: 150px;
+  color: #1D0056;
+  background-color: inherit;
+  border-radius: 2px;
+  text-decoration: none;
+  border: 1px solid #1D0056;
+  padding: 4px 15px;
+  border-radius: 5px;
+  margin-top: 15px;
+  opacity: 1;
+}
+
+.returned-btn {
+  padding: 0px;
+  box-sizing: content-box;
+  display: block;
+  text-decoration: none;
+  background-color: inherit;
+  border-radius: 2px;
+  border: 1px solid $green;
+  position: relative;
+  top: 150px;
+  a {
+    color: $green;
+    text-decoration: none;
+    font-size: 12px;
+    text-shadow: none;
+  }
+}
+.returned-btn:hover {
+  background: $green;
+  a{
+    color: white;
+  }
+}
+
+
+
 // .btn-back {
 //   width: 110px;
 //   background-color: inherit;

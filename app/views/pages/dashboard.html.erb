@@ -66,18 +66,18 @@
             <div class="user-album-card border-available" style="background-image: url(<%= album.comic.artwork %>);">
           <% else %>
             <div class="user-album-card border-unavailable" style="background-image: url(<%= album.comic.artwork %>);">
+              <div id='returned-btn' class="btn returned-btn">
+                <%= link_to 'BD rendue !', album_rental_path(album, album.rentals.first), method: 'DELETE' %>
+              </div>
           <% end %>
-          <div class="card-hover">
-            <div class="user-album-card-description">
-              <h5> <%= album.comic.title %> </h5>
-            </div>
-          </div>
-          <div class= "user-album-card-link">
-            <p><%= link_to 'Modifier', edit_album_path(album) %></p>
-          </div>
-          </div>
-          <div id='returned-btn' class="btn btn-dashboard">
-              <%= link_to 'Rendu !', album_rental_path(album, album.rentals.first), method: 'DELETE' %>
+              <div class="card-hover">
+                <div class="user-album-card-description">
+                  <h5> <%= album.comic.title %> </h5>
+                </div>
+              </div>
+              <div class= "user-album-card-link">
+                <p><%= link_to 'Modifier', edit_album_path(album) %></p>
+              </div>
             </div>
         <% end %>
       <% else %>
