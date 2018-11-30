@@ -179,6 +179,33 @@
 }
 
 
+#cancel-request-btn {
+  width: 110px;
+  position: absolute;
+  bottom: -38px;
+  background-color: inherit;
+  border-radius: 2px;
+  text-decoration: none;
+  border: 1px solid $red;
+  padding: 2px 8px;
+  border-radius: 5px;
+  margin-top: 15px;
+  opacity: 1;
+  a{
+    color: $red;
+    text-shadow:none;
+    font-size: 14px;
+  }
+}
+
+#cancel-request-btn:hover {
+  background-color: $red;
+  a{
+    color: white !important;
+    text-decoration: none;
+  }
+}
+
 
 // .btn-back {
 //   width: 110px;
