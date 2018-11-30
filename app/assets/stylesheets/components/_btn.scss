@@ -5,7 +5,7 @@
 }
 
 .btn-detail-album-index {
-  width: 120px;
+  width: 80px;
   color: white;
   background-color: inherit;
   border-radius: 2px;
@@ -72,6 +72,30 @@
   font-size: 0.8em;
   font-weight: normal;
   margin-left: -4px;
+}
+
+.btn-show-modal {
+  width: 250px;
+  color: #1D0056;
+  background-color: inherit;
+  border-radius: 2px;
+  text-decoration: none;
+  border: 1px solid #1D0056;
+  padding: 4px 15px;
+  border-radius: 5px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  opacity: 1;
+}
+
+.btn-show-modal:hover {
+  color: white;
+  background-color: #1D0056;
+}
+
+.btn-show-modal span {
+  font-size: 0.8em;
+  font-weight: normal;
 }
 
 .album-rental-status {

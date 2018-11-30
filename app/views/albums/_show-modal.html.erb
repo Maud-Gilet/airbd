@@ -1,0 +1,39 @@
+<% @placeholder = "Bonjour #{album.user.first_name},\nJe voudrais emprunter votre album #{album.comic.title}.\n\nMerci de votre réponse !\n - #{current_user.first_name}" %>
+
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="bdcover">
+        <img class="bdshow" src='<%= album.comic.artwork %>'>
+      </div>
+    </div>
+    <div class="bdinfo">
+      <h2 class="fancy"><%= album.comic.title %></h2>
+      <p>
+        <%= album.comic.author %> <br><br>
+        Propriétaire : <%= album.user.first_name %> <%= album.user.last_name %> <br>
+        Sa description : <%= album.description %></p>
+    </div>
+
+    <% if current_user.id == album.user.id %>
+      <%= link_to 'Modifier', edit_album_path(album), class: 'btn btn-primary' %>
+    <% else %>
+      <button type="button" id="button-msg-box" class="btn btn-show-modal">Contacter le propriétaire</button>
+    <% end %>
+    <div id="modal-msg-toggle" class="modal-body">
+      <form>
+        <div class="form-group">
+          <label for="message-text" class="col-form-label">Message :</label>
+          <textarea class="form-control" id="message-text" placeholder="<%= @placeholder %>"></textarea>
+        </div>
+      </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary cancel-button" data-dismiss="modal">Annuler</button>
+        <%= link_to 'Envoyer', album_requests_path(album), method: 'POST', class: 'btn btn-primary send-button' %>
+      </div>
+    </div>
+  </div>
+</div>
