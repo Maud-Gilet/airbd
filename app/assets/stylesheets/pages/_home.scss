@@ -2,31 +2,33 @@
 
 .homeland{
   text-align: center;
-  background-color: #020A57;
+  background-color: #2231ff;
   padding: 10px;
   color: white;
-  text-shadow: 1px 1px 5px black;
+  text-shadow: none;
+  h1 {
+    margin-top:0px;
+    margin-bottom: 0px;
+  }
 }
-
-
 .banner{
   text-align: center;
-  background-image: asset-url("landing-image.jpg");
-  background-size: cover;
+  background-color:#020A57;
 }
 .steps{
   display: flex;
   text-shadow: 1px 1px 5px black;
   text-align: center;
   justify-content: center;
+  background: #2231ff;
 }
 
 .step {
   text-align: center;
   margin: 50px;
   color: white;
-  text-shadow: 1px 1px 5px black;
-  background-color: rgba(2,10,87, 0.8);
+  text-shadow: none;
+  background-color: #020a579c;
   padding: 10px;
   width: 300px;
 }
@@ -34,8 +36,8 @@
 .video {
   display: flex;
   justify-content: center;
-  background-color: #020A57;
-  height: 380px;
+  background-color: #2231ff;
+  height: 420px;
 }
 
 #myVideo {

@@ -1,7 +1,17 @@
 .btn-rose {
-  background-color: #EA335E;
+  background-color: #020A57;
   border-radius: 10px;
   color: #FFFFFF;
+  margin-top: 20px;
+}
+.btn-rose:hover {
+  background: white;
+    border: solid 1px #020A57;
+    color: #020A57;
+}
+body > div.homeland > a {
+  text-decoration: none;
+  text-shadow: none;
 }
 
 .btn-detail-album-index {
@@ -187,7 +197,7 @@
   border-radius: 2px;
   border: 1px solid $green;
   position: relative;
-  top: 150px;
+  top: 155px;
   a {
     color: $green;
     text-decoration: none;
