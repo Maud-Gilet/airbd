@@ -33,8 +33,8 @@
 }
 .edit-user-button {
   position: absolute;
-  right: 30px;
-  top: 7px;
+  left: 30px;
+  bottom: 15px;
 }
 
 #user-infos-display{
@@ -51,6 +51,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  width: 50vw;
 }
 #user-rentals-container {
   grid-row: 3 / span 2;
@@ -84,6 +85,7 @@
   padding-left: 0px;
 }
 .user-message-display{
+  width: 15vw;
   padding-left: 0px;
   table {
     font-size: 15px;
