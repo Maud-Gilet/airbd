@@ -4,7 +4,8 @@
   <div class="form-inputs">
     <%= f.association :comic, :collection => Comic.all.order(:title), label: 'Référence BD' %>
 
-    <%= render 'add-comic' %>
+    <%= render 'add-comic' if @album.comic.nil? %>
+
     <%= f.input :description,
                 required: true,
                 autofocus: true,
