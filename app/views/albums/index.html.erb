@@ -1,62 +1,33 @@
 <div class="main-container">
 
-  <div class="container text-align-center">
+  <div class="text-align-center">
     <h3 class="fancy"><%= @albums.where.not(user: current_user).count %> BD près de vous</h3>
 
-    <div class="container albums-index-container">
+    <div class="albums-index-container">
+
       <% albums_sorted = @albums.sort_by { |album| album.comic.title.downcase } %>
       <% albums_sorted.each do |album| %>
         <% if album.available == true %>
           <% if album.user != current_user %>
-            <% if album.rentals.length == 0 %>
-
                 <div class="card-container">
-                  <div class="card index-album-card-body" style="background-image: url(<%= album.comic.artwork %>);">
-                    <%= link_to 'Info', album_path(album) %>
+                  <% if album.available == true %>
+                    <div class="card index-album-card-body border-available" style="background-image: url(<%= album.comic.artwork %>);">
+                      <%= link_to 'Info', album_path(album) %>
+                  <% else %>
+                    <div class="card index-album-card-body border-unavailable" style="background-image: url(<%= album.comic.artwork %>);">
+                      <%= link_to 'Info', album_path(album) %>
+                  <% end %>
                     <div class="card-hover">
                       <div class="index-album-card-description">
                         <h5><%= album.comic.title %></h5>
                         <p>Localisation : <%= album.user.address %></p>
                       </div>
-                    </div>
-                  </div>
-                  <div class="index-album-card-footer">
-                    <div class='index-contact-btn'>
-                      <button type="button" class="btn-contact-proprio" data-toggle="modal" data-target="#demandeEmpruntModal"><span>Contacter</span> </button>
-                      <div class="modal fade" id="demandeEmpruntModal" tabindex="-1" role="dialog" aria-labelledby="demandeEmpruntModalLabel" aria-hidden="true">
-                      <%= render 'modal', album: album %>
+                      <div class='index-details-btn'>
+                        <button type="button" class="btn-detail-album-index"><span>Détails</span></button>
                       </div>
                     </div>
-                    <div class="album-rental-status">
-                      <i class="fas fa-square" style=" color: green;"></i>
-                    </div>
                   </div>
-
               </div>
-            <%else %>
-              <div class="card-container">
-                <div class="card index-album-card-body" style="background-image: url(<%= album.comic.artwork %>);">
-                  <%= link_to 'Info', album_path(album) %>
-                  <div class="card-hover">
-                    <div class="index-album-card-description">
-                      <h5><%= album.comic.title %></h5>
-                      <p>Localisation : <%= album.user.address %></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="index-album-card-footer">
-                  <div class='index-contact-btn'>
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#demandeEmpruntModal"><span>Contacter</span> </button>
-                    <div class="modal fade" id="demandeEmpruntModal" tabindex="-1" role="dialog" aria-labelledby="demandeEmpruntModalLabel" aria-hidden="true">
-                    <%= render 'modal', album: album %>
-                    </div>
-                  </div>
-                  <div class="album-rental-status">
-                    <i class="fas fa-square" style=" color: red;"></i>
-                  </div>
-                </div>
-              </div>
-            <% end %>
           <% end %>
         <% end %>
       <% end %>

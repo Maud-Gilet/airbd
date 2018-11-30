@@ -15,6 +15,7 @@
 .card-container {
   height: 250px;
   width: 200px;
+  margin-right: -20px;
 }
 
 .index-album-card-body {
@@ -26,6 +27,7 @@
   color: white;
   position: relative;
   margin-bottom: 4px;
+  box-shadow: 4px 4px 1px rgb(200, 200, 200);
   > a {
     position: absolute;
     top: 0;
@@ -66,13 +68,6 @@
     font-size: 0.7em;
   }
 }
-.index-album-card-footer {
-  height: 32px;
-  margin-right: 1px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
 
 
 .user-album-card {
@@ -90,16 +85,6 @@
   margin-right: 3px;
   margin-left: 3px;
   color: white;
-}
-.card-hover {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(-225deg, #061f56 30%, #031335 80%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
 }
 .user-album-card:hover .card-hover {
   opacity: 0.9;
