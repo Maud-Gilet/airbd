@@ -30,7 +30,7 @@ const autocomplete = (event) => {
   const title_query = document.querySelector('#comic_title').value;
   const isbn_query = document.querySelector('#comic_isbn').value;
   const url_api = 'https://www.googleapis.com/books/v1/volumes?q=';
-  const url = `${url_api}${title_query}+isbn:${isbn_query}&key=AIzaSyCE2I7XkcStaYjq5CGZc0uqyGafVhQkpH4`;
+  const url = `${url_api}${title_query}+isbn:${isbn_query}&key=AIzaSyD_iYERhfu5IQpQiQljTgtw8xg3Da7JH5k`;
   fetch(url)
     .then(response => response.json())
     .then(data => drawResponse(data));
